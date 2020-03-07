@@ -107,3 +107,8 @@ h2:after {
     border:1px solid black;
     padding:1px;
 }
+@media screen and (max-width:900px){
+    #container{
+        padding:1%;
+    }
+}
