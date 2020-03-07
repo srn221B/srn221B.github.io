@@ -1,3 +1,125 @@
 <html>
-<p>test</p>
+<head>
+    <!-- css -->
+    <link rel="stylesheet" href="index.css">
+    <!-- js -->
+    <script type="text/javascript" src="index.js"></script>
+    <script src="js/jquery.js"></script>
+    <!-- font -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <!-- -->
+    <meta charset="UTF-8">
+    <title>portfolio</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body onload="typetext()">
+    <div id="box">
+        <div id="box_container">
+            <div class="typW"><a href="#who"><div id="typ"></div></a></div>
+        </div> 
+    </div>
+    <div id="container">
+        <h2 id="who">Whois</h2>
+        <li>Shimoyama</li>
+        <h2>Interests</h2>
+        <li>データ処理基盤</li>
+        <li>データベース関連</li>
+        <h2>Programming</h2>
+        <li>Python</li>
+        <li>Java</li>
+        <li>JavaScript</li>
+        <li>C#</li>
+        <h2>Products</h2>
+        <p></p>
+        <li>Recommended_pyspark<br>
+            作品レビューからユーザーごとのおすすめの作品を抽出するプログラム。<br>
+            PysparkのMLパッケージ上のALS最適化アルゴリズムを利用して実装しました。<br>
+            <span class="skill">pyspark</span>
+            <span class="skill">python3</span>
+            <span class="skill">spark</span>
+            <span class="skill">postgresql</span>
+            <br>
+            <a href="https://github.com/srn221B/Recommended_pyspark" >source code</a>
+        </li>
+        <br>
+        <li>WebProject<br>
+            おすすめの作品を表示するWebアプリケーション。<br>
+            アカウント管理のCRUD機能，作品のレビュー投稿/変更機能など，Djangoを用いて実装しました。<br>
+            <span class="skill">python3</span>
+            <span class="skill">django</span>
+            <span class="skill">postgresql</span>
+            <span class="skill">html</span>
+            <span class="skill">css</span>
+            <span class="skill">javascript</span>
+            <span class="skill">bootstrap</span>
+            <br>
+            <a href="https://github.com/srn221B/WebProject" >source code</a>
+        </li>
+        <br>
+        <li>Show relationships<br>
+            Twitterのフォロー関係をNeo4jに格納するツール。<br>
+            引数で指定したアカウントのフォロー状況を保存します。<br>
+            <span class="skill">neo4j</span>
+            <span class="skill">python3</span>
+            <span class="skill">cypher</span>
+            <br>
+            <a href="https://github.com/srn221B/Show_relationships" >source code</a>
+        </li>
+        <br>
+        <li>WebSearch<br>
+            Apache httpdで立てたWebサーバー上のログをリアルタイムで分析するツール。<br>
+            sparkstreamingを使って分析を実装しています。</br>
+            <span class="skill">scala</span>
+            <span class="skill">spark-streaming</span>
+            <span class="skill">kafka</span>
+            <span class="skill">fluentd</span>
+            <br>
+            <a href="https://github.com/srn221B/WebSearch" >source code</a>
+        </li>
+        <br>
+        <li>
+            WebSearch2<br>
+            アクセス数，リンククリック数を集計しグラフで表示するWebアプリケーション。<br>
+            バックエンドにはServlet，グラフ処理ではJavaScriptとCanvasjsを使用しました。<br>
+            <span class="skill">java8</span>
+            <span class="skill">Servlet</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">html</span>
+            <span class="skill">css</span>
+            <span class="skill">mysql</span>
+            <br>
+            <a href="https://github.com/srn221B/WebSearch2">source code</a>
+        </li>
+        <br>
+        <li>
+            Mysql tool<br>
+            mysqlの操作をしやすくするツール。<br>
+            「SQLがわからない人でもmysqlを操作できる」をテーマに作りました。コンソール上で動きます。<br>
+            <span class="skill">shellscript</span>
+            <span class="skill">mysql</span>
+            <br>
+            <a href="https://github.com/srn221B/mysql_tool">source code</a>
+        </li>
+        <br>
+        <li>
+            Hobby page<br>
+            自分の趣味用のホームページ。<br>
+            <span class="skill">html</span>
+            <span class="skill">css</span>
+            <span class="skill">javascript</span>
+            <br>
+            <a href="https://shironatan.github.io/">link</a>
+        </li>
+        <h2>Qualifications</h2>
+        <li>基本情報技術者</li>
+        <li>応用情報技術者</li>
+        <li>情報処理安全確保支援士</li>
+        <li>データーベーススペシャリスト</li>
+        <li>ネットワークスペシャリスト</li>
+        <li>日商簿記検定3級</li>
+        <li>ファイナンシャルプランニング検定3級</li>
+    </div>       
+</body>
 </html>
