@@ -6,7 +6,7 @@
 :wrench:プロダクトとか興味あることとか  
 
 ## Usage
-[URL]<https://github.io/srn221B.github.io>  
+[URL]<https://srn221B.github.io>  
 
 ## Author
 Shimoyama
