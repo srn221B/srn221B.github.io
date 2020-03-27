@@ -7,53 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>srn221B@gmail.com (srn221B)</managingEditor>
     <webMaster>srn221B@gmail.com (srn221B)</webMaster>
-    <lastBuildDate>Mon, 20 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Mar 2020 19:15:05 +0900</lastBuildDate>
     
 	<atom:link href="https://srn221B.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>example</title>
-      <link>https://srn221B.github.io/tags/example/</link>
-      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
+      <title>hello</title>
+      <link>https://srn221B.github.io/tags/hello/</link>
+      <pubDate>Fri, 27 Mar 2020 19:15:05 +0900</pubDate>
       <author>srn221B@gmail.com (srn221B)</author>
-      <guid>https://srn221B.github.io/tags/example/</guid>
+      <guid>https://srn221B.github.io/tags/hello/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>photoswipe</title>
-      <link>https://srn221B.github.io/tags/photoswipe/</link>
-      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
+      <title>world</title>
+      <link>https://srn221B.github.io/tags/world/</link>
+      <pubDate>Fri, 27 Mar 2020 19:15:05 +0900</pubDate>
       <author>srn221B@gmail.com (srn221B)</author>
-      <guid>https://srn221B.github.io/tags/photoswipe/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>math</title>
-      <link>https://srn221B.github.io/tags/math/</link>
-      <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
-      <author>srn221B@gmail.com (srn221B)</author>
-      <guid>https://srn221B.github.io/tags/math/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>code</title>
-      <link>https://srn221B.github.io/tags/code/</link>
-      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
-      <author>srn221B@gmail.com (srn221B)</author>
-      <guid>https://srn221B.github.io/tags/code/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>markdown</title>
-      <link>https://srn221B.github.io/tags/markdown/</link>
-      <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
-      <author>srn221B@gmail.com (srn221B)</author>
-      <guid>https://srn221B.github.io/tags/markdown/</guid>
+      <guid>https://srn221B.github.io/tags/world/</guid>
       <description></description>
     </item>
     
