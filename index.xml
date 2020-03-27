@@ -7,10 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>srn221B@gmail.com (srn221B)</managingEditor>
     <webMaster>srn221B@gmail.com (srn221B)</webMaster>
-    <lastBuildDate>Fri, 27 Mar 2020 20:16:08 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2020 00:08:00 +0900</lastBuildDate>
     
 	<atom:link href="https://srn221B.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>pysparkをjupyter-notebookから使う</title>
+      <link>https://srn221B.github.io/post/content1/</link>
+      <pubDate>Sat, 28 Mar 2020 00:08:00 +0900</pubDate>
+      <author>srn221B@gmail.com (srn221B)</author>
+      <guid>https://srn221B.github.io/post/content1/</guid>
+      <description>今までpysparkをいじるときはコンソールでネチネチやっていたのですが、 pythonをjupyter-notebookで開発しているときに便利だなあと思ったので、思い切ってpysparkをいじるときもjupyter-notebookを使うようにしました。その時の備忘録。
+前提条件  Sparkがインストールされていること（この記事がわかりやすかったです。) jupyterがインストールされていること(pipまたはcondaでインストール)  環境  OS：Mac python：Python 3.7.6 Spark：2.4.5 jupyter-notebook：6.0.3  Sparkの設定 Spark上の環境ファイルのテンプレート(spark-env-sh.template)をコピーします。
+$ cd $SPARK_HOME/conf $ cp spark-env.sh.template spark-env.sh コピーしたファイルを書き換えていきます。
+$ vim spark-env.sh export PYSPARK_PYTHON=/usr/local/bin/python3 #pythonの場所 export PYSPARK_DRIVER_PYTHON=/usr/local/bin/jupyter #jupyterインストールした場所 export PYSPARK_DRIVER_PYTHON_OPTS=&amp;#34;notebook&amp;#34; 環境変数の設定 以下の環境変数を.bashrc,.bash_profileに書きます。
+$ vim ~/.bashrc SPARK_HOME=#Sparkをインストールした場所 PATH=$SPARK_HOME/bin:$PATH 動作確認 早速、jupyterを使って簡単な演算を実装して見ます。
+$ pyspark http://localhost:8888/?token= *Token*が表示されます http://localhost:8888/loginを開きます。表示されたTokenを元にログインします。
+Pythonファイルを作ります（New&amp;gt;python3）
+以下のようにsc(SparkSession)が使えていたら完了。
+終わり 快適な開発環境が整いました:heart_eyes:</description>
+    </item>
     
     <item>
       <title>テスト２</title>
