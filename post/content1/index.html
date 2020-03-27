@@ -59,7 +59,7 @@
   "headline": "pysparkをjupyter-notebookから使う",
   "description" : "spark2.4.5をjupyter-notebook6.0.3から使う方法です。",
   "inLanguage" : "ja",
-  "wordCount":  50 ,
+  "wordCount":  49 ,
   "datePublished" : "2020-03-28T00:08:00",
   "dateModified" : "2020-03-28T00:08:00",
   "image" : "https:\/\/srn221B.github.io\/images\/prof.jpg",
@@ -284,7 +284,7 @@ $ cp spark-env.sh.template spark-env.sh
 </code></pre></div><p>コピーしたファイルを書き換えていきます。</p>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ vim spark-env.sh
 export PYSPARK_PYTHON=/usr/local/bin/python3 #pythonの場所
-export PYSPARK_DRIVER_PYTHON=/usr/local/bin/jupyter #jupyterインストールした場所
+export PYSPARK_DRIVER_PYTHON=jupyter 
 export PYSPARK_DRIVER_PYTHON_OPTS=&#34;notebook&#34;
 </code></pre></div><h2 id="環境変数の設定">環境変数の設定</h2>
 <p>以下の環境変数を<code>.bashrc</code>,<code>.bash_profile</code>に書きます。</p>
