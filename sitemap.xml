@@ -28,26 +28,15 @@
   </url>
   
   <url>
-    <loc>https://srn221B.github.io/tags/</loc>
-    <lastmod>2020-03-27T19:15:05+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://srn221B.github.io/tags/test1/</loc>
-    <lastmod>2020-03-27T19:15:05+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://srn221B.github.io/post/notitle/</loc>
-    <lastmod>2020-03-27T19:15:05+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://srn221B.github.io/page/about/</loc>
   </url>
   
   <url>
     <loc>https://srn221B.github.io/page/</loc>
+  </url>
+  
+  <url>
+    <loc>https://srn221B.github.io/tags/</loc>
   </url>
   
 </urlset>
