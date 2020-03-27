@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on 467memo</title>
-    <link>https://srn221B.github.io/categories/</link>
-    <description>Recent content in Categories on 467memo</description>
+    <title>test on 467memo</title>
+    <link>https://srn221B.github.io/categories/test/</link>
+    <description>Recent content in test on 467memo</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>srn221B@gmail.com (srn221B)</managingEditor>
     <webMaster>srn221B@gmail.com (srn221B)</webMaster>
     <lastBuildDate>Fri, 27 Mar 2020 20:01:14 +0900</lastBuildDate>
     
-	<atom:link href="https://srn221B.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://srn221B.github.io/categories/test/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>test</title>
-      <link>https://srn221B.github.io/categories/test/</link>
+      <title>テストページ</title>
+      <link>https://srn221B.github.io/post/test/</link>
       <pubDate>Fri, 27 Mar 2020 20:01:14 +0900</pubDate>
       <author>srn221B@gmail.com (srn221B)</author>
-      <guid>https://srn221B.github.io/categories/test/</guid>
-      <description></description>
+      <guid>https://srn221B.github.io/post/test/</guid>
+      <description>test test</description>
     </item>
     
   </channel>

@@ -4,17 +4,27 @@
   
   <url>
     <loc>https://srn221B.github.io/</loc>
-    <lastmod>2020-03-27T19:15:05+09:00</lastmod>
+    <lastmod>2020-03-27T20:01:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://srn221B.github.io/tags/hello/</loc>
-    <lastmod>2020-03-27T19:15:05+09:00</lastmod>
+    <loc>https://srn221B.github.io/categories/</loc>
+    <lastmod>2020-03-27T20:01:14+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://srn221B.github.io/post/</loc>
-    <lastmod>2020-03-27T19:15:05+09:00</lastmod>
+    <lastmod>2020-03-27T20:01:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://srn221B.github.io/categories/test/</loc>
+    <lastmod>2020-03-27T20:01:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://srn221B.github.io/post/test/</loc>
+    <lastmod>2020-03-27T20:01:14+09:00</lastmod>
   </url>
   
   <url>
@@ -23,7 +33,7 @@
   </url>
   
   <url>
-    <loc>https://srn221B.github.io/tags/world/</loc>
+    <loc>https://srn221B.github.io/tags/test1/</loc>
     <lastmod>2020-03-27T19:15:05+09:00</lastmod>
   </url>
   
@@ -34,10 +44,6 @@
   
   <url>
     <loc>https://srn221B.github.io/page/about/</loc>
-  </url>
-  
-  <url>
-    <loc>https://srn221B.github.io/categories/</loc>
   </url>
   
   <url>
