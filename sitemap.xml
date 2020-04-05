@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://srn221B.github.io/categories/</loc>
+    <lastmod>2020-04-04T15:40:59+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://srn221B.github.io/post/content2/</loc>
     <lastmod>2020-04-04T15:40:59+09:00</lastmod>
   </url>
@@ -28,13 +33,13 @@
   </url>
   
   <url>
-    <loc>https://srn221B.github.io/tags/</loc>
+    <loc>https://srn221B.github.io/categories/spark/</loc>
     <lastmod>2020-04-04T15:40:59+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://srn221B.github.io/categories/</loc>
-    <lastmod>2020-03-28T00:08:00+09:00</lastmod>
+    <loc>https://srn221B.github.io/tags/</loc>
+    <lastmod>2020-04-04T15:40:59+09:00</lastmod>
   </url>
   
   <url>
@@ -49,11 +54,6 @@
   
   <url>
     <loc>https://srn221B.github.io/post/content1/</loc>
-    <lastmod>2020-03-28T00:08:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://srn221B.github.io/categories/spark/</loc>
     <lastmod>2020-03-28T00:08:00+09:00</lastmod>
   </url>
   
