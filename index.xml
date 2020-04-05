@@ -7,10 +7,32 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>srn221B@gmail.com (srn221B)</managingEditor>
     <webMaster>srn221B@gmail.com (srn221B)</webMaster>
-    <lastBuildDate>Sat, 28 Mar 2020 00:08:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2020 15:40:59 +0900</lastBuildDate>
     
 	<atom:link href="https://srn221B.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）</title>
+      <link>https://srn221B.github.io/post/content2/</link>
+      <pubDate>Sat, 04 Apr 2020 15:40:59 +0900</pubDate>
+      <author>srn221B@gmail.com (srn221B)</author>
+      <guid>https://srn221B.github.io/post/content2/</guid>
+      <description>前回に引き続きSpark環境構築系のおはなし。
+Scala、何で開発してますか
+VScode，AtomなどのエディタやEclipse，NetBeansなどのIDE，開発内容によって様々だと思います。
+自分は簡単なコードだとScala(Metals)とScalaSnippetsの拡張機能を入れてVscodeを利用，Pluginを利用するものだったり複雑なコードだとIntelliJ IDEAを利用しています。
+SparkアプリケーションをIntelliJ IDEAで開発する方法がとても便利だったので記録に残しておきます。
+前提条件  Spark2.4がインストールされていること IntelliJIDEAがインストールされていること IntelliJIDEAでScalaを開発することができること
+（N予備校のScala基礎コースで開発環境構築方法およびScalaの基礎が大変わかりやすかったです） Java8がインストールされていること JDK8を用いて開発できること
+（[File]=&amp;gt;[Project Structure&amp;hellip;]=&amp;gt;左カラムのSDKsを選択=&amp;gt;JDKhomepathを変更からJDKの追加はできます）  環境  OS：Mac Spark：2.4.5 IntelliJIDEA：2019.3  プロジェクト作成 Scala=&amp;gt;sbt でプロジェクトを作成します。
+Name，Location：任意
+JDK：1.8
+sbt，Scala：現在安定して動くもの（ここではsbt1.2.8，Scala2.11.0）
+入力が終わったら[Finish]を押します。
+Sparkを使えるようにする targetの配下にあるbuild.sbtにSparkのPluginを追加します。バージョンなどはMVNREPOSITORYサイトを参考にします。
+name := &amp;#34;sparktest&amp;#34; version := &amp;#34;0.1&amp;#34; scalaVersion := &amp;#34;2.11.0&amp;#34; libraryDependencies ++= Seq( &amp;#34;org.apache.spark&amp;#34; %% &amp;#34;spark-core&amp;#34; % &amp;#34;2.4.0&amp;#34;, &amp;#34;org.apache.spark&amp;#34; %% &amp;#34;spark-sql&amp;#34; % &amp;#34;2.4.0&amp;#34;, &amp;#34;org.apache.spark&amp;#34; %% &amp;#34;spark-mllib&amp;#34; % &amp;#34;2.4.3&amp;#34;, &amp;#34;org.apache.spark&amp;#34; %% &amp;#34;spark-graphx&amp;#34; % &amp;#34;2.4.0&amp;#34;, &amp;#34;org.apache.spark&amp;#34; %% &amp;#34;spark-streaming&amp;#34; % &amp;#34;2.4.0&amp;#34; ) 無事インポートが成功したらSpark環境は完了です。</description>
+    </item>
     
     <item>
       <title>pysparkをjupyter-notebookから使う</title>

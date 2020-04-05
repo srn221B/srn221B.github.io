@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>pysparkをjupyter-notebookから使う - 467memo</title>
-  <meta name="description" content="spark2.4.5をjupyter-notebook6.0.3から使う方法です。">
+  <title>IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編） - 467memo</title>
+  <meta name="description" content="IntelliJIDEAでScalaを用いたSparkアプリケーションを開発するときの環境構築方法">
   <meta name="author" content="srn221B"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -44,8 +44,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/srn221B.github.io\/post\/content1\/",
-          "name": "Pysparkをjupyter notebookから使う"
+          "@id": "https:\/\/srn221B.github.io\/post\/content2\/",
+          "name": "Intelli j i d e aでの sparkアプリケーション開発方法（ scala編）"
         }
     }]
 }
@@ -56,15 +56,15 @@
   "author": {
     "name" : "srn221B"
   },
-  "headline": "pysparkをjupyter-notebookから使う",
-  "description" : "spark2.4.5をjupyter-notebook6.0.3から使う方法です。",
+  "headline": "IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）",
+  "description" : "IntelliJIDEAでScalaを用いたSparkアプリケーションを開発するときの環境構築方法",
   "inLanguage" : "ja",
-  "wordCount":  49 ,
-  "datePublished" : "2020-03-28T00:08:00",
-  "dateModified" : "2020-03-28T00:08:00",
+  "wordCount":  169 ,
+  "datePublished" : "2020-04-04T15:40:59",
+  "dateModified" : "2020-04-04T15:40:59",
   "image" : "https:\/\/srn221B.github.io\/images\/prof.jpg",
-  "keywords" : [ "pyspark, jupyter" ],
-  "mainEntityOfPage" : "https:\/\/srn221B.github.io\/post\/content1\/",
+  "keywords" : [ "spark, IntelliJIDEA" ],
+  "mainEntityOfPage" : "https:\/\/srn221B.github.io\/post\/content2\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/srn221B.github.io",
@@ -78,15 +78,15 @@
 }
 </script>
 
-<meta property="og:title" content="pysparkをjupyter-notebookから使う" />
-<meta property="og:description" content="spark2.4.5をjupyter-notebook6.0.3から使う方法です。">
+<meta property="og:title" content="IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）" />
+<meta property="og:description" content="IntelliJIDEAでScalaを用いたSparkアプリケーションを開発するときの環境構築方法">
 <meta property="og:image" content="https://srn221B.github.io/images/prof.jpg" />
-<meta property="og:url" content="https://srn221B.github.io/post/content1/" />
+<meta property="og:url" content="https://srn221B.github.io/post/content2/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="467memo" />
 
-  <meta name="twitter:title" content="pysparkをjupyter-notebookから使う" />
-  <meta name="twitter:description" content="spark2.4.5をjupyter-notebook6.0.3から使う方法です。">
+  <meta name="twitter:title" content="IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）" />
+  <meta name="twitter:description" content="IntelliJIDEAでScalaを用いたSparkアプリケーションを開発するときの環境構築方法">
   <meta name="twitter:image" content="https://srn221B.github.io/images/prof.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@srn221B" />
@@ -228,7 +228,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>pysparkをjupyter-notebookから使う</h1>
+                <h1>IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）</h1>
               
               
               
@@ -236,7 +236,7 @@
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;March 28, 2020に投稿
+  <i class="fas fa-calendar"></i>&nbsp;April 4, 2020に投稿
   
   
   
@@ -263,54 +263,108 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>今までpysparkをいじるときはコンソールでネチネチやっていたのですが、
-pythonをjupyter-notebookで開発しているときに便利だなあと思ったので、思い切ってpysparkをいじるときもjupyter-notebookを使うようにしました。その時の備忘録。</p>
+        <p>前回に引き続きSpark環境構築系のおはなし。</p>
+<p><strong>Scala、何で開発してますか</strong><br>
+VScode，AtomなどのエディタやEclipse，NetBeansなどのIDE，開発内容によって様々だと思います。<br>
+自分は簡単なコードだと<code>Scala(Metals)</code>と<code>ScalaSnippets</code>の拡張機能を入れてVscodeを利用，Pluginを利用するものだったり複雑なコードだとIntelliJ IDEAを利用しています。</p>
+<p>SparkアプリケーションをIntelliJ IDEAで開発する方法がとても便利だったので記録に残しておきます。</p>
 <h2 id="前提条件">前提条件</h2>
 <ul>
-<li>Sparkがインストールされていること（<a href="https://qiita.com/Hiroki11x/items/4f5129094da4c91955bc">この記事</a>がわかりやすかったです。)</li>
-<li>jupyterがインストールされていること(<code>pip</code>または<code>conda</code>でインストール)</li>
+<li>Spark2.4がインストールされていること</li>
+<li>IntelliJIDEAがインストールされていること</li>
+<li>IntelliJIDEAでScalaを開発することができること<br>
+（<a href="https://www.nnn.ed.nico/courses/143/chapters">N予備校のScala基礎コース</a>で開発環境構築方法およびScalaの基礎が大変わかりやすかったです）</li>
+<li>Java8がインストールされていること</li>
+<li>JDK8を用いて開発できること<br>
+（[File]=&gt;[Project Structure&hellip;]=&gt;左カラムのSDKsを選択=&gt;JDKhomepathを変更からJDKの追加はできます）</li>
 </ul>
 <h2 id="環境">環境</h2>
 <ul>
 <li>OS：Mac</li>
-<li>python：Python 3.7.6</li>
 <li>Spark：2.4.5</li>
-<li>jupyter-notebook：6.0.3</li>
+<li>IntelliJIDEA：2019.3</li>
 </ul>
-<h2 id="sparkの設定">Sparkの設定</h2>
-<p>Spark上の環境ファイルのテンプレート(<code>spark-env-sh.template</code>)をコピーします。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ cd $SPARK_HOME/conf
-$ cp spark-env.sh.template spark-env.sh
-</code></pre></div><p>コピーしたファイルを書き換えていきます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ vim spark-env.sh
-export PYSPARK_PYTHON=/usr/local/bin/python3 #pythonの場所
-export PYSPARK_DRIVER_PYTHON=jupyter 
-export PYSPARK_DRIVER_PYTHON_OPTS=&#34;notebook&#34;
-</code></pre></div><h2 id="環境変数の設定">環境変数の設定</h2>
-<p>以下の環境変数を<code>.bashrc</code>,<code>.bash_profile</code>に書きます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ vim ~/.bashrc
-SPARK_HOME=#Sparkをインストールした場所
-PATH=$SPARK_HOME/bin:$PATH
-</code></pre></div><h2 id="動作確認">動作確認</h2>
-<p>早速、jupyterを使って簡単な演算を実装して見ます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ pyspark
-http://localhost:8888/?token= *Token*が表示されます
-</code></pre></div><p><a href="http://localhost:8888/login">http://localhost:8888/login</a>を開きます。表示された<strong>Token</strong>を元にログインします。<br>
-<img src="https://srn221b.github.io/images/content1_1.png" alt="login画面"><br>
-Pythonファイルを作ります（<code>New</code>&gt;<code>python3</code>）<br>
-<img src="https://srn221b.github.io/images/content1_2.png" alt="ファイル作成画面"> <br>
-以下のようにsc(SparkSession)が使えていたら完了。<br>
-<img src="https://srn221b.github.io/images/content1_3.png" alt="実装画面"></p>
-<h2 id="終わり">終わり</h2>
-<p><strong>快適な開発環境</strong>が整いました:heart_eyes:</p>
+<h2 id="プロジェクト作成">プロジェクト作成</h2>
+<p>Scala=&gt;sbt でプロジェクトを作成します。<br>
+<img src="https://srn221b.github.io/images/content2_1.png" alt="プロジェクト作成画面"><br>
+Name，Location：任意<br>
+JDK：1.8<br>
+sbt，Scala：現在安定して動くもの（ここではsbt1.2.8，Scala2.11.0）<br>
+入力が終わったら[Finish]を押します。<br>
+<img src="https://srn221b.github.io/images/content2_2.png" alt="プロジェクト作成画面"></p>
+<h2 id="sparkを使えるようにする">Sparkを使えるようにする</h2>
+<p><code>target</code>の配下にある<code>build.sbt</code>にSparkのPluginを追加します。バージョンなどは<a href="https://mvnrepository.com/artifact/org.apache.spark">MVNREPOSITORYサイト</a>を参考にします。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">name := &#34;sparktest&#34;
+
+version := &#34;0.1&#34;
+
+scalaVersion := &#34;2.11.0&#34;
+
+libraryDependencies ++= Seq(
+  &#34;org.apache.spark&#34; %% &#34;spark-core&#34; % &#34;2.4.0&#34;,
+  &#34;org.apache.spark&#34; %% &#34;spark-sql&#34; % &#34;2.4.0&#34;,
+  &#34;org.apache.spark&#34; %% &#34;spark-mllib&#34; % &#34;2.4.3&#34;,
+  &#34;org.apache.spark&#34; %% &#34;spark-graphx&#34; % &#34;2.4.0&#34;,
+  &#34;org.apache.spark&#34; %% &#34;spark-streaming&#34; % &#34;2.4.0&#34;
+)
+</code></pre></div><p>無事インポートが成功したらSpark環境は完了です。</p>
+<h2 id="コーディング">コーディング</h2>
+<p>src=&gt;main=&gt;scalaを右クリック　New=&gt;Scala Classで<code>任意の名前[Class]</code>を作成します。<br>
+<code>Main.scala</code>を編集します。ここではJSONファイルを単語集計したものをテキストファイルに保存するコードを書いていきます。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">import org.apache.spark.{SparkConf, SparkContext}
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.scala.DefaultScalaModule
+
+object example {
+  def main(args: Array[String]): Unit = {
+    // Sessionの生成
+    val conf = new SparkConf().setAppName(&#34;appname&#34;).setMaster(&#34;local[*]&#34;)
+    val sc   = new SparkContext(conf)
+
+    val jsonLines = sc.parallelize(Array(
+      &#34;&#34;&#34;{&#34;name&#34; : &#34;Apple&#34;,&#34;num&#34;: 1}&#34;&#34;&#34;,
+      &#34;&#34;&#34;{&#34;name&#34; : &#34;Orange&#34;,&#34;num&#34;: 4}&#34;&#34;&#34;,
+      &#34;&#34;&#34;{&#34;name&#34; : &#34;Apple&#34;,&#34;num&#34;: 2}&#34;&#34;&#34;,
+      &#34;&#34;&#34;{&#34;name&#34; : &#34;Peach&#34;,&#34;num&#34;: 1}&#34;&#34;&#34;
+    ))
+
+    val result = jsonLines.mapPartitions {lines =&gt;
+      //JSONのパーサを初期化
+      val mapper = new ObjectMapper()
+      mapper.registerModule(DefaultScalaModule)
+
+      //JSON文字列をパースし、&#34;name&#34;と&#34;num&#34;のペアで返却
+      lines.map {line =&gt;
+        val f = mapper.readValue(line,classOf[Map[String,String]])
+        (f(f&#34;name&#34;),f(&#34;num&#34;))
+      }
+
+    }
+    // savedirに集計結果を保存
+    result.saveAsTextFile(&#34;savedir&#34;)
+  }
+}
+</code></pre></div><h2 id="実行">実行</h2>
+<p><code>Terminal</code>上でjarファイルを生成します。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sbt package
+</code></pre></div><p>spark-submitを使って実行</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ $SPARK_HOME/bin/spark-submit 
+</code></pre></div><p>savedir上に集計結果が保存されていることを確認します。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ cat savedir_part*
+(Apple,1)
+(Orange,4)
+(Apple,2)
+(Peach,1)
+</code></pre></div><h2 id="終わり">終わり</h2>
+<p>実行毎にspark-submit〜と打つのは煩雑ですが、予測候補が出てくるのは開発する上での嬉しい＆助かる機能です🥰</p>
 
 
         
           <div class="blog-tags">
             
-              <a href="https://srn221B.github.io/tags/pyspark/">pyspark</a>&nbsp;
+              <a href="https://srn221B.github.io/tags/spark/">spark</a>&nbsp;
             
-              <a href="https://srn221B.github.io/tags/jupyter/">jupyter</a>&nbsp;
+              <a href="https://srn221B.github.io/tags/intellijidea/">IntelliJIDEA</a>&nbsp;
             
           </div>
         
@@ -325,42 +379,42 @@ Pythonファイルを作ります（<code>New</code>&gt;<code>python3</code>）<
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent1%2f&amp;text=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86&amp;via=srn221B" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;text=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89&amp;via=srn221B" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent1%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent1%2f&amp;title=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;title=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent1%2f&amp;title=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;title=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent1%2f&amp;title=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;title=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent1%2f&amp;description=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;description=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -383,13 +437,9 @@ Pythonファイルを作ります（<code>New</code>&gt;<code>python3</code>）<
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://srn221B.github.io/post/test2/" data-toggle="tooltip" data-placement="top" title="テスト２">&larr; 前ページ</a>
+              <a href="https://srn221B.github.io/post/content1/" data-toggle="tooltip" data-placement="top" title="pysparkをjupyter-notebookから使う">&larr; 前ページ</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://srn221B.github.io/post/content2/" data-toggle="tooltip" data-placement="top" title="IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）">次ページ &rarr;</a>
-            </li>
           
         </ul>
       
