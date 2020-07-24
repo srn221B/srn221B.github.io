@@ -5,8 +5,6 @@
     <link>https://srn221B.github.io/tags/intellijidea/</link>
     <description>Recent content in IntelliJIDEA on 467memo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>srn221B@gmail.com (srn221B)</managingEditor>
-    <webMaster>srn221B@gmail.com (srn221B)</webMaster>
     <lastBuildDate>Sat, 04 Apr 2020 15:40:59 +0900</lastBuildDate>
     
 	<atom:link href="https://srn221B.github.io/tags/intellijidea/index.xml" rel="self" type="application/rss+xml" />
@@ -16,7 +14,7 @@
       <title>IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）</title>
       <link>https://srn221B.github.io/post/content2/</link>
       <pubDate>Sat, 04 Apr 2020 15:40:59 +0900</pubDate>
-      <author>srn221B@gmail.com (srn221B)</author>
+      
       <guid>https://srn221B.github.io/post/content2/</guid>
       <description>前回に引き続きSpark環境構築系のおはなし。
 Scala、何で開発してますか

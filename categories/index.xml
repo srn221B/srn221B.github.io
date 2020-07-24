@@ -5,8 +5,6 @@
     <link>https://srn221B.github.io/categories/</link>
     <description>Recent content in Categories on 467memo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>srn221B@gmail.com (srn221B)</managingEditor>
-    <webMaster>srn221B@gmail.com (srn221B)</webMaster>
     <lastBuildDate>Sat, 04 Apr 2020 15:40:59 +0900</lastBuildDate>
     
 	<atom:link href="https://srn221B.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
@@ -16,7 +14,7 @@
       <title>spark</title>
       <link>https://srn221B.github.io/categories/spark/</link>
       <pubDate>Sat, 04 Apr 2020 15:40:59 +0900</pubDate>
-      <author>srn221B@gmail.com (srn221B)</author>
+      
       <guid>https://srn221B.github.io/categories/spark/</guid>
       <description></description>
     </item>
@@ -25,7 +23,7 @@
       <title>雑記</title>
       <link>https://srn221B.github.io/categories/%E9%9B%91%E8%A8%98/</link>
       <pubDate>Fri, 27 Mar 2020 20:16:08 +0900</pubDate>
-      <author>srn221B@gmail.com (srn221B)</author>
+      
       <guid>https://srn221B.github.io/categories/%E9%9B%91%E8%A8%98/</guid>
       <description></description>
     </item>
@@ -34,7 +32,7 @@
       <title>test</title>
       <link>https://srn221B.github.io/categories/test/</link>
       <pubDate>Fri, 27 Mar 2020 20:01:14 +0900</pubDate>
-      <author>srn221B@gmail.com (srn221B)</author>
+      
       <guid>https://srn221B.github.io/categories/test/</guid>
       <description></description>
     </item>
