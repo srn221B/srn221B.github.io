@@ -61,23 +61,5 @@ Pythonファイルを作ります（New&amp;gt;python3）
 終わり 快適な開発環境が整いました:heart_eyes:</description>
     </item>
     
-    <item>
-      <title>テスト２</title>
-      <link>https://srn221B.github.io/post/test2/</link>
-      <pubDate>Fri, 27 Mar 2020 20:16:08 +0900</pubDate>
-      
-      <guid>https://srn221B.github.io/post/test2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>テストページ</title>
-      <link>https://srn221B.github.io/post/test/</link>
-      <pubDate>Fri, 27 Mar 2020 20:01:14 +0900</pubDate>
-      
-      <guid>https://srn221B.github.io/post/test/</guid>
-      <description>テストページです  2020/03/27 20:10 Friday  </description>
-    </item>
-    
   </channel>
 </rss>
