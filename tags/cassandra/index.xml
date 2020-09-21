@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cassandra on 467のメモ帳</title>
+    <link>https://srn221B.github.io/tags/cassandra/</link>
+    <description>Recent content in cassandra on 467のメモ帳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 20 Sep 2020 20:51:54 +0900</lastBuildDate>
+    
+	<atom:link href="https://srn221B.github.io/tags/cassandra/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>zeppelinからcassandraとsparkを使う</title>
+      <link>https://srn221B.github.io/post/content3/</link>
+      <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
+      
+      <guid>https://srn221B.github.io/post/content3/</guid>
+      <description>タイトル通り。zeppelinからcassandraとsparkを使うまで簡単に構築メモ。 kubernetesとhelm 3.3.1を使って構築する。sparkとzeppelinのインストール→Cassandraのインストールの流れで説明。
+Pod単位で弄れるが為だけにkubernetesを使います。Namespace分けたりIngress追加したりなどIaCならではの機能を活かした実装はここではしません。悪しからず。
+sparkとzeppelin  リポジトリはhttps://github.com/helm/charts/tree/master/stable/spark デプロイすると、MasterPod1台、WorkerPod1台が動く。 Zepplin上のファイルはデフォルトで記憶される。  values.yamlにおいてServicePortの編集  デフォルトのままだとsparkWebUIとzeppelinのServicePortが競合する。なので、どちらかのServicePortを変更する。 ここではsparkWebUIのServicePortを8080から8081に変更する。  $ vim spark/values.yaml ... WebUi: Name: webui ServicePort: 8081 ContainerPort: 8080 ... インストール $ helm install spark ./spark インストール確認  defaultのnamespaceにインストールされていることを確認。  $ kubectl get pod spark-master-877d79587-shv7g 1/1 Running spark-worker-87d4579f4-7fsg4 1/1 Running spark-worker-87d4579f4-lb7ft 1/1 Running spark-worker-87d4579f4-tvcnb 1/1 Running spark-zeppelin-85d6c884d8-289mb 1/1 Running zeppelinとSparkWebUIにアクセスの確認  ブラウザ上からlocalhost:8080とlocalhost:8081へのアクセスへの確認ができれば完了。
+  cassandra  リポジトリはhttps://github.com/bitnami/charts/tree/master/bitnami/cassandra user/passwordを設定しやすそうだったのでbitnamiを選択。  values.yamlにおいてuser/passwordの編集  デフォルトのままだとuserはcassandra、passwordはランダムで作られる。なので、指定したもので作られるように設定する。 ここではuserをcassandra、passwordをcassandraとする。  .</description>
+    </item>
+    
+  </channel>
+</rss>

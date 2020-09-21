@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編） - 467のメモ帳</title>
-  <meta name="description" content="IntelliJIDEAでScalaを用いたSparkアプリケーションを開発するときの環境構築方法">
+  <title>zeppelinからcassandraとsparkを使う - 467のメモ帳</title>
+  <meta name="description" content="kubernetes上で環境構築した時のメモ">
   <meta name="author" content="srn221B"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -44,8 +44,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/srn221B.github.io\/post\/content2\/",
-          "name": "Intelli j i d e aでの sparkアプリケーション開発方法（ scala編）"
+          "@id": "https:\/\/srn221B.github.io\/post\/content3\/",
+          "name": "Zeppelinからcassandraとsparkを使う"
         }
     }]
 }
@@ -56,15 +56,15 @@
   "author": {
     "name" : "srn221B"
   },
-  "headline": "IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）",
-  "description" : "IntelliJIDEAでScalaを用いたSparkアプリケーションを開発するときの環境構築方法",
+  "headline": "zeppelinからcassandraとsparkを使う",
+  "description" : "kubernetes上で環境構築した時のメモ",
   "inLanguage" : "ja",
-  "wordCount":  169 ,
-  "datePublished" : "2020-04-04T15:40:59",
-  "dateModified" : "2020-04-04T15:40:59",
+  "wordCount":  107 ,
+  "datePublished" : "2020-09-20T20:51:54",
+  "dateModified" : "2020-09-20T20:51:54",
   "image" : "https:\/\/srn221B.github.io\/images\/prof.jpg",
-  "keywords" : [ "spark, IntelliJIDEA" ],
-  "mainEntityOfPage" : "https:\/\/srn221B.github.io\/post\/content2\/",
+  "keywords" : [ "spark, zeppelin, kubernetes, cassandra" ],
+  "mainEntityOfPage" : "https:\/\/srn221B.github.io\/post\/content3\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/srn221B.github.io",
@@ -78,15 +78,15 @@
 }
 </script>
 
-<meta property="og:title" content="IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）" />
-<meta property="og:description" content="IntelliJIDEAでScalaを用いたSparkアプリケーションを開発するときの環境構築方法">
+<meta property="og:title" content="zeppelinからcassandraとsparkを使う" />
+<meta property="og:description" content="kubernetes上で環境構築した時のメモ">
 <meta property="og:image" content="https://srn221B.github.io/images/prof.jpg" />
-<meta property="og:url" content="https://srn221B.github.io/post/content2/" />
+<meta property="og:url" content="https://srn221B.github.io/post/content3/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="467のメモ帳" />
 
-  <meta name="twitter:title" content="IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）" />
-  <meta name="twitter:description" content="IntelliJIDEAでScalaを用いたSparkアプリケーションを開発するときの環境構築方法">
+  <meta name="twitter:title" content="zeppelinからcassandraとsparkを使う" />
+  <meta name="twitter:description" content="kubernetes上で環境構築した時のメモ">
   <meta name="twitter:image" content="https://srn221B.github.io/images/prof.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@srn221B" />
@@ -228,7 +228,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）</h1>
+                <h1>zeppelinからcassandraとsparkを使う</h1>
               
               
               
@@ -236,7 +236,7 @@
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;April 4, 2020に投稿
+  <i class="fas fa-calendar"></i>&nbsp;September 20, 2020に投稿
   
   
   
@@ -263,100 +263,85 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>前回に引き続きSpark環境構築系のおはなし。</p>
-<p><strong>Scala、何で開発してますか</strong><br>
-VScode，AtomなどのエディタやEclipse，NetBeansなどのIDE，開発内容によって様々だと思います。<br>
-自分は簡単なコードだと<code>Scala(Metals)</code>と<code>ScalaSnippets</code>の拡張機能を入れてVscodeを利用，Pluginを利用するものだったり複雑なコードだとIntelliJ IDEAを利用しています。</p>
-<p>SparkアプリケーションをIntelliJ IDEAで開発する方法がとても便利だったので記録に残しておきます。</p>
-<h2 id="前提条件">前提条件</h2>
+        <p>タイトル通り。zeppelinからcassandraとsparkを使うまで<strong>簡単に</strong>構築メモ。
+kubernetesとhelm 3.3.1を使って構築する。<strong>sparkとzeppelinのインストール</strong>→<strong>Cassandraのインストール</strong>の流れで説明。<br>
+Pod単位で弄れるが為だけにkubernetesを使います。Namespace分けたりIngress追加したりなどIaCならではの機能を活かした実装はここではしません。悪しからず。</p>
+<h2 id="sparkとzeppelin">sparkとzeppelin</h2>
 <ul>
-<li>Spark2.4がインストールされていること</li>
-<li>IntelliJIDEAがインストールされていること</li>
-<li>IntelliJIDEAでScalaを開発することができること<br>
-（<a href="https://www.nnn.ed.nico/courses/143/chapters">N予備校のScala基礎コース</a>で開発環境構築方法およびScalaの基礎が大変わかりやすかったです）</li>
-<li>Java8がインストールされていること</li>
-<li>JDK8を用いて開発できること<br>
-（[File]=&gt;[Project Structure&hellip;]=&gt;左カラムのSDKsを選択=&gt;JDKhomepathを変更からJDKの追加はできます）</li>
+<li>リポジトリは<a href="https://github.com/helm/charts/tree/master/stable/spark">https://github.com/helm/charts/tree/master/stable/spark</a></li>
+<li>デプロイすると、MasterPod1台、WorkerPod1台が動く。</li>
+<li>Zepplin上のファイルはデフォルトで記憶される。</li>
 </ul>
-<h2 id="環境">環境</h2>
+<h3 id="valuesyamlにおいてserviceportの編集"><code>values.yaml</code>においてServicePortの編集</h3>
 <ul>
-<li>OS：Mac</li>
-<li>Spark：2.4.5</li>
-<li>IntelliJIDEA：2019.3</li>
+<li>デフォルトのままだとsparkWebUIとzeppelinのServicePortが競合する。なので、どちらかのServicePortを変更する。</li>
+<li>ここではsparkWebUIのServicePortを8080から8081に変更する。</li>
 </ul>
-<h2 id="プロジェクト作成">プロジェクト作成</h2>
-<p>Scala=&gt;sbt でプロジェクトを作成します。<br>
-<img src="https://srn221b.github.io/images/content2_1.png" alt="プロジェクト作成画面"><br>
-Name，Location：任意<br>
-JDK：1.8<br>
-sbt，Scala：現在安定して動くもの（ここではsbt1.2.8，Scala2.11.0）<br>
-入力が終わったら[Finish]を押します。<br>
-<img src="https://srn221b.github.io/images/content2_2.png" alt="プロジェクト作成画面"></p>
-<h2 id="sparkを使えるようにする">Sparkを使えるようにする</h2>
-<p><code>target</code>の配下にある<code>build.sbt</code>にSparkのPluginを追加します。バージョンなどは<a href="https://mvnrepository.com/artifact/org.apache.spark">MVNREPOSITORYサイト</a>を参考にします。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">name := &#34;sparktest&#34;
-
-version := &#34;0.1&#34;
-
-scalaVersion := &#34;2.11.0&#34;
-
-libraryDependencies ++= Seq(
-  &#34;org.apache.spark&#34; %% &#34;spark-core&#34; % &#34;2.4.0&#34;,
-  &#34;org.apache.spark&#34; %% &#34;spark-sql&#34; % &#34;2.4.0&#34;,
-  &#34;org.apache.spark&#34; %% &#34;spark-mllib&#34; % &#34;2.4.3&#34;,
-  &#34;org.apache.spark&#34; %% &#34;spark-graphx&#34; % &#34;2.4.0&#34;,
-  &#34;org.apache.spark&#34; %% &#34;spark-streaming&#34; % &#34;2.4.0&#34;
-)
-</code></pre></div><p>無事インポートが成功したらSpark環境は完了です。</p>
-<h2 id="コーディング">コーディング</h2>
-<p>src=&gt;main=&gt;scalaを右クリック　New=&gt;Scala Classで<code>任意の名前[Class]</code>を作成します。<br>
-<code>Main.scala</code>を編集します。ここではJSONファイルを単語集計したものをテキストファイルに保存するコードを書いていきます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">import org.apache.spark.{SparkConf, SparkContext}
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.scala.DefaultScalaModule
-
-object example {
-  def main(args: Array[String]): Unit = {
-    // Sessionの生成
-    val conf = new SparkConf().setAppName(&#34;appname&#34;).setMaster(&#34;local[*]&#34;)
-    val sc   = new SparkContext(conf)
-
-    val jsonLines = sc.parallelize(Array(
-      &#34;&#34;&#34;{&#34;name&#34; : &#34;Apple&#34;,&#34;num&#34;: 1}&#34;&#34;&#34;,
-      &#34;&#34;&#34;{&#34;name&#34; : &#34;Orange&#34;,&#34;num&#34;: 4}&#34;&#34;&#34;,
-      &#34;&#34;&#34;{&#34;name&#34; : &#34;Apple&#34;,&#34;num&#34;: 2}&#34;&#34;&#34;,
-      &#34;&#34;&#34;{&#34;name&#34; : &#34;Peach&#34;,&#34;num&#34;: 1}&#34;&#34;&#34;
-    ))
-
-    val result = jsonLines.mapPartitions {lines =&gt;
-      //JSONのパーサを初期化
-      val mapper = new ObjectMapper()
-      mapper.registerModule(DefaultScalaModule)
-
-      //JSON文字列をパースし、&#34;name&#34;と&#34;num&#34;のペアで返却
-      lines.map {line =&gt;
-        val f = mapper.readValue(line,classOf[Map[String,String]])
-        (f(f&#34;name&#34;),f(&#34;num&#34;))
-      }
-
-    }
-    // savedirに集計結果を保存
-    result.saveAsTextFile(&#34;savedir&#34;)
-  }
-}
-</code></pre></div><h2 id="実行">実行</h2>
-<p><code>Terminal</code>上でjarファイルを生成します。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sbt package
-</code></pre></div><p>spark-submitを使って実行</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ $SPARK_HOME/bin/spark-submit 
-</code></pre></div><p>savedir上に集計結果が保存されていることを確認します。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ cat savedir_part*
-(Apple,1)
-(Orange,4)
-(Apple,2)
-(Peach,1)
-</code></pre></div><h2 id="終わり">終わり</h2>
-<p>実行毎にspark-submit〜と打つのは煩雑ですが、予測候補が出てくるのは開発する上での嬉しい＆助かる機能です🥰</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ vim spark/values.yaml
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">...
+WebUi:
+  Name: webui
+  ServicePort: 8081
+  ContainerPort: 8080
+...
+</code></pre></div><h3 id="インストール">インストール</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ helm install spark ./spark
+</code></pre></div><h3 id="インストール確認">インストール確認</h3>
+<ul>
+<li>defaultのnamespaceにインストールされていることを確認。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ kubectl get pod 
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">spark-master-877d79587-shv7g      1/1       Running   
+spark-worker-87d4579f4-7fsg4      1/1       Running   
+spark-worker-87d4579f4-lb7ft      1/1       Running   
+spark-worker-87d4579f4-tvcnb      1/1       Running  
+spark-zeppelin-85d6c884d8-289mb   1/1       Running  
+</code></pre></div><h3 id="zeppelinとsparkwebuiにアクセスの確認">zeppelinとSparkWebUIにアクセスの確認</h3>
+<ul>
+<li>ブラウザ上から<code>localhost:8080</code>と<code>localhost:8081</code>へのアクセスへの確認ができれば完了。<br>
+<img src="content3/zeppelin.png" alt="zeppelinトップページ" title="zeppelinトップページ">
+<img src="content3/spark.png" alt="sparkWebUIトップページ" title="sparkWebUIトップページ"></li>
+</ul>
+<h2 id="cassandra">cassandra</h2>
+<ul>
+<li>リポジトリは<a href="https://github.com/bitnami/charts/tree/master/bitnami/cassandra">https://github.com/bitnami/charts/tree/master/bitnami/cassandra</a></li>
+<li>user/passwordを設定しやすそうだったのでbitnamiを選択。</li>
+</ul>
+<h3 id="valuesyamlにおいてuserpasswordの編集"><code>values.yaml</code>においてuser/passwordの編集</h3>
+<ul>
+<li>デフォルトのままだとuserはcassandra、passwordはランダムで作られる。なので、指定したもので作られるように設定する。</li>
+<li>ここではuserをcassandra、passwordをcassandraとする。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">...
+dbUser:
+  user: cassandra
+  forcePassword: false
+  password: cassandra
+...
+</code></pre></div><h3 id="インストール-1">インストール</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ helm install cassandra ./cassandra
+</code></pre></div><h3 id="インストール確認-1">インストール確認</h3>
+<ul>
+<li>defaultのnamespaceにインストールされていることを確認。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ kubectl get pod -n default
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">cassandra-0                   1/1       Running   
+</code></pre></div><h2 id="zeppelin上のcassandraのinterpreter">Zeppelin上のCassandraのInterpreter</h2>
+<ul>
+<li>zeppelinからcassandraへ接続する為の設定を変更。</li>
+</ul>
+<h3 id="cassandraが動いているclusteripを確認">cassandraが動いているClusterIPを確認</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ kubectl get svc
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                                        AGE
+cassandra            ClusterIP      10.99.62.208    &lt;none&gt;        9042/TCP,9160/TCP,8080/TCP                     1d
+</code></pre></div><h3 id="interpreterの設定変更">Interpreterの設定変更</h3>
+<ul>
+<li>ブラウザ上から<code>http://localhost:8080/#/interpreter</code>を開く。</li>
+<li>上記で確認した情報を元に<code>cassandra.credentials.password</code>、<code>cassandra.credentials.username</code>、<code>cassandra.host</code>、<code>cassandra.native.port</code>の設定を変更。<br>
+<img src="content3/cassandra.png" alt="Interpreter設定変更画面" title="Interpreter設定変更画面"></li>
+</ul>
+<h2 id="完了確認">完了確認</h2>
+<p><img src="content3/success.png" alt="完了確認画面" title="完了確認画面"></p>
 
 
         
@@ -364,7 +349,11 @@ object example {
             
               <a href="https://srn221B.github.io/tags/spark/">spark</a>&nbsp;
             
-              <a href="https://srn221B.github.io/tags/intellijidea/">IntelliJIDEA</a>&nbsp;
+              <a href="https://srn221B.github.io/tags/zeppelin/">zeppelin</a>&nbsp;
+            
+              <a href="https://srn221B.github.io/tags/kubernetes/">kubernetes</a>&nbsp;
+            
+              <a href="https://srn221B.github.io/tags/cassandra/">cassandra</a>&nbsp;
             
           </div>
         
@@ -379,42 +368,42 @@ object example {
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;text=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89&amp;via=srn221B" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent3%2f&amp;text=zeppelin%e3%81%8b%e3%82%89cassandra%e3%81%a8spark%e3%82%92%e4%bd%bf%e3%81%86&amp;via=srn221B" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent3%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;title=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent3%2f&amp;title=zeppelin%e3%81%8b%e3%82%89cassandra%e3%81%a8spark%e3%82%92%e4%bd%bf%e3%81%86" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;title=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent3%2f&amp;title=zeppelin%e3%81%8b%e3%82%89cassandra%e3%81%a8spark%e3%82%92%e4%bd%bf%e3%81%86" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;title=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent3%2f&amp;title=zeppelin%e3%81%8b%e3%82%89cassandra%e3%81%a8spark%e3%82%92%e4%bd%bf%e3%81%86" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent2%2f&amp;description=IntelliJ%20IDEA%e3%81%a7%e3%81%aeSpark%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba%e6%96%b9%e6%b3%95%ef%bc%88Scala%e7%b7%a8%ef%bc%89" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fsrn221B.github.io%2fpost%2fcontent3%2f&amp;description=zeppelin%e3%81%8b%e3%82%89cassandra%e3%81%a8spark%e3%82%92%e4%bd%bf%e3%81%86" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -436,7 +425,7 @@ object example {
                   <ul>
                 
                 
-                    <li><a href="/post/content3/">zeppelinからcassandraとsparkを使う</a></li>
+                    <li><a href="/post/content2/">IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）</a></li>
                 
               </ul>
 
@@ -448,13 +437,9 @@ object example {
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://srn221B.github.io/post/content1/" data-toggle="tooltip" data-placement="top" title="pysparkをjupyter-notebookから使う">&larr; 前ページ</a>
+              <a href="https://srn221B.github.io/post/content2/" data-toggle="tooltip" data-placement="top" title="IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）">&larr; 前ページ</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://srn221B.github.io/post/content3/" data-toggle="tooltip" data-placement="top" title="zeppelinからcassandraとsparkを使う">次ページ &rarr;</a>
-            </li>
           
         </ul>
       

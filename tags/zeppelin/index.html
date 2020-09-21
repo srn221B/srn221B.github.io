@@ -7,7 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Posts - 467のメモ帳</title>
+  <title>Overview of all pages with the tag #zeppelin - 467のメモ帳</title>
+  <meta name="description" content="Overview of all pages with the tag #zeppelin, such as: zeppelinからcassandraとsparkを使う">
   <meta name="author" content="srn221B"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -29,13 +30,13 @@
 }
 </script>
 
-<meta property="og:title" content="Posts" />
+<meta property="og:title" content="zeppelin" />
 <meta property="og:image" content="https://srn221B.github.io/images/prof.jpg" />
-<meta property="og:url" content="https://srn221B.github.io/post/" />
+<meta property="og:url" content="https://srn221B.github.io/tags/zeppelin/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="467のメモ帳" />
 
-  <meta name="twitter:title" content="Posts" />
+  <meta name="twitter:title" content="zeppelin" />
   <meta name="twitter:image" content="https://srn221B.github.io/images/prof.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@srn221B" />
@@ -175,29 +176,14 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post-heading">
+            <div class="tags-heading">
               
-                <h1>Posts</h1>
-              
-              
+                <h1>zeppelin</h1>
               
               
-                <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;September 20, 2020に投稿
-  
-  
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;srn221B
-    
-  
-  
-</span>
-
-
+                <hr class="small">
+              
+              
               
             </div>
           </div>
@@ -262,226 +248,6 @@ sparkとzeppelin  リポジトリはhttps://github.com/helm/charts/tree/master/s
         <a href="https://srn221B.github.io/tags/cassandra/">cassandra</a>&nbsp;
         
     </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://srn221B.github.io/post/content2/">
-        <h2 class="post-title">IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;April 4, 2020に投稿
-  
-  
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;srn221B
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        前回に引き続きSpark環境構築系のおはなし。
-Scala、何で開発してますか
-VScode，AtomなどのエディタやEclipse，NetBeansなどのIDE，開発内容によって様々だと思います。
-自分は簡単なコードだとScala(Metals)とScalaSnippetsの拡張機能を入れてVscodeを利用，Pluginを利用するものだったり複雑なコードだとIntelliJ IDEAを利用しています。
-SparkアプリケーションをIntelliJ IDEAで開発する方法がとても便利だったので記録に残しておきます。
-前提条件  Spark2.4がインストールされていること IntelliJIDEAがインストールされていること IntelliJIDEAでScalaを開発することができること
-（N予備校のScala基礎コースで開発環境構築方法およびScalaの基礎が大変わかりやすかったです） Java8がインストールされていること JDK8を用いて開発できること
-（[File]=&gt;[Project Structure&hellip;]=&gt;左カラムのSDKsを選択=&gt;JDKhomepathを変更からJDKの追加はできます）  環境  OS：Mac Spark：2.4.5 IntelliJIDEA：2019.3  プロジェクト作成 Scala=&gt;sbt でプロジェクトを作成します。
-Name，Location：任意
-JDK：1.8
-sbt，Scala：現在安定して動くもの（ここではsbt1.2.8，Scala2.11.0）
-入力が終わったら[Finish]を押します。
-Sparkを使えるようにする targetの配下にあるbuild.sbtにSparkのPluginを追加します。バージョンなどはMVNREPOSITORYサイトを参考にします。
-name := &#34;sparktest&#34; version := &#34;0.1&#34; scalaVersion := &#34;2.11.0&#34; libraryDependencies ++= Seq( &#34;org.apache.spark&#34; %% &#34;spark-core&#34; % &#34;2.4.0&#34;, &#34;org.apache.spark&#34; %% &#34;spark-sql&#34; % &#34;2.4.0&#34;, &#34;org.apache.spark&#34; %% &#34;spark-mllib&#34; % &#34;2.4.3&#34;, &#34;org.apache.spark&#34; %% &#34;spark-graphx&#34; % &#34;2.4.0&#34;, &#34;org.apache.spark&#34; %% &#34;spark-streaming&#34; % &#34;2.4.0&#34; ) 無事インポートが成功したらSpark環境は完了です。
-        <a href="https://srn221B.github.io/post/content2/" class="post-read-more">[続きを読む]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://srn221B.github.io/tags/spark/">spark</a>&nbsp;
-        
-        <a href="https://srn221B.github.io/tags/intellijidea/">IntelliJIDEA</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://srn221B.github.io/post/content1/">
-        <h2 class="post-title">pysparkをjupyter-notebookから使う</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;March 28, 2020に投稿
-  
-  
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;srn221B
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>今までpysparkをいじるときはコンソールでネチネチやっていたのですが、
-pythonをjupyter-notebookで開発しているときに便利だなあと思ったので、思い切ってpysparkをいじるときもjupyter-notebookを使うようにしました。その時の備忘録。</p>
-<h2 id="前提条件">前提条件</h2>
-<ul>
-<li>Sparkがインストールされていること（<a href="https://qiita.com/Hiroki11x/items/4f5129094da4c91955bc">この記事</a>がわかりやすかったです。)</li>
-<li>jupyterがインストールされていること(<code>pip</code>または<code>conda</code>でインストール)</li>
-</ul>
-<h2 id="環境">環境</h2>
-<ul>
-<li>OS：Mac</li>
-<li>python：Python 3.7.6</li>
-<li>Spark：2.4.5</li>
-<li>jupyter-notebook：6.0.3</li>
-</ul>
-<h2 id="sparkの設定">Sparkの設定</h2>
-<p>Spark上の環境ファイルのテンプレート(<code>spark-env-sh.template</code>)をコピーします。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ cd $SPARK_HOME/conf
-$ cp spark-env.sh.template spark-env.sh
-</code></pre></div><p>コピーしたファイルを書き換えていきます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ vim spark-env.sh
-export PYSPARK_PYTHON=/usr/local/bin/python3 #pythonの場所
-export PYSPARK_DRIVER_PYTHON=jupyter 
-export PYSPARK_DRIVER_PYTHON_OPTS=&#34;notebook&#34;
-</code></pre></div><h2 id="環境変数の設定">環境変数の設定</h2>
-<p>以下の環境変数を<code>.bashrc</code>,<code>.bash_profile</code>に書きます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ vim ~/.bashrc
-SPARK_HOME=#Sparkをインストールした場所
-PATH=$SPARK_HOME/bin:$PATH
-</code></pre></div><h2 id="動作確認">動作確認</h2>
-<p>早速、jupyterを使って簡単な演算を実装して見ます。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ pyspark
-http://localhost:8888/?token= *Token*が表示されます
-</code></pre></div><p><a href="http://localhost:8888/login">http://localhost:8888/login</a>を開きます。表示された<strong>Token</strong>を元にログインします。<br>
-<img src="https://srn221b.github.io/images/content1_1.png" alt="login画面"><br>
-Pythonファイルを作ります（<code>New</code>&gt;<code>python3</code>）<br>
-<img src="https://srn221b.github.io/images/content1_2.png" alt="ファイル作成画面"> <br>
-以下のようにsc(SparkSession)が使えていたら完了。<br>
-<img src="https://srn221b.github.io/images/content1_3.png" alt="実装画面"></p>
-<h2 id="終わり">終わり</h2>
-<p><strong>快適な開発環境</strong>が整いました:heart_eyes:</p>
-
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://srn221B.github.io/tags/pyspark/">pyspark</a>&nbsp;
-        
-        <a href="https://srn221B.github.io/tags/jupyter/">jupyter</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://srn221B.github.io/post/test2/">
-        <h2 class="post-title">テスト２</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;March 27, 2020に投稿
-  
-  
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;srn221B
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        
-        
-    </div>
-
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://srn221B.github.io/post/test/">
-        <h2 class="post-title">テストページ</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;March 27, 2020に投稿
-  
-  
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;srn221B
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <h3 id="テストページです">テストページです</h3>
-<ul>
-<li>2020/03/27</li>
-<li>20:10</li>
-<li>Friday</li>
-</ul>
-
-        
-    </div>
-
     
 
 </article>
