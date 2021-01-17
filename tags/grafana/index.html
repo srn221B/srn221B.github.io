@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.68.3" />
-  <link rel="canonical" href="/content4/">
+  <link rel="canonical" href="/tags/grafana/">
 
   
 
@@ -39,7 +39,7 @@
 
   
   
-  <title>Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法 | 467 notes</title>
+  <title>Grafana | 467 notes</title>
 </head>
 
   <body>
@@ -186,7 +186,7 @@
       
       
       
-      <a href="/post/" aria-current="page">
+      <a href="/post/" >
         <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
           <use xlink:href="#bookmark"></use>
         </svg>
@@ -199,7 +199,7 @@
       
       
       
-      <a href="/tags/" >
+      <a href="/tags/" aria-current="page">
         <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
           <use xlink:href="#bookmark"></use>
         </svg>
@@ -229,309 +229,36 @@
       <div class="main-and-footer">
         <div>
           
-  <main id="main">
-    <h1>
-      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-        <use xlink:href="#bookmark"></use>
-      </svg>
-      Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法
-    </h1>
-
-    <div class="date">
-      
-      
-      <strong>Publish date: </strong>Jan 17, 2021
-      
-        
-          <br>
-          <strong>Last updated: </strong>Jan 17, 2021
-        
-      
-    </div>
-
-    
-      <div class="tags">
-        <strong>Tags: </strong>
-        <ul aria-label="tags">
-          
-            <li>
-              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-                <use xlink:href="#tag"></use>
-              </svg>
-              
-              <a href="/tags/docker/">Docker</a>
-            </li>
-          
-            <li>
-              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-                <use xlink:href="#tag"></use>
-              </svg>
-              
-              <a href="/tags/grafana/">Grafana</a>
-            </li>
-          
-            <li>
-              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-                <use xlink:href="#tag"></use>
-              </svg>
-              
-              <a href="/tags/prometheus/">Prometheus</a>
-            </li>
-          
-            <li>
-              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-                <use xlink:href="#tag"></use>
-              </svg>
-              
-              <a href="/tags/flask/">Flask</a>
-            </li>
-          
-        </ul>
-      </div>
-    
-    
-    
-      
-
-  <nav class="toc" aria-labelledby="toc-heading">
-    <h2 id="toc-heading">Table of contents</h2>
-    <ol>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#datasource%e3%81%ae%e8%b5%b7%e5%8b%95%e6%99%82%e8%bf%bd%e5%8a%a0">
-            Datasourceの起動時追加
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#dashboard%e3%81%ae%e8%b5%b7%e5%8b%95%e6%99%82%e8%bf%bd%e5%8a%a0%e6%96%b9%e6%b3%95%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6">
-            Dashboardの起動時追加方法について
-          </a>
-        </li>
-      
-    </ol>
-  </nav>
-
-
-    
-
-    <p>ブログ書くの久々すぎて書き方忘れた。。。うそです。<br>
-去年の卒研終わったあたりから作り始めたこのサイトですが、あまりにも初期状態すぎたので、重い腰をあげて「HugoのthemaをBeautifulHugoからCupperに変更」「repositoryを整理」の２点をしました。一新したのでブログ書くモチベもこれで上がるはず（？）仕事もだいぶ慣れてきたので2022年は些細なことでももう少し書いていきたいな。。。<br>
-タイトル通り
-「Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法」のメモを簡単に備忘録としてまとめておきます。</p>
-<h2 id="datasourceの起動時追加">Datasourceの起動時追加</h2>
-<p>Dashboardの起動時追加を設定する前に、まずはこっちを作っていきます。</p>
-<h3 id="構成">構成</h3>
-<pre><code>.
-├── docker-compose.yml
-├── flask
-│   ├── Dockerfile
-│   └── app
-│       └── app.py
-├── grafana
-│   ├── Dockerfile
-│   └── datasource.yml
-└── prometheus.yml
-</code></pre>
-<p>ここでは
-grafanaで可視化するサーバーは<strong>prometheus</strong>で、prometheusでの監視は<strong>flaskを用いた自作exporter</strong>としています。</p>
-<h3 id="flaskdockerfile">flask/Dockerfile</h3>
-<pre><code>FROM ubuntu:latest
-RUN apt-get update
-RUN apt-get install python3 python3-pip -y
-RUN pip3 install flask prometheus-client
-RUN mkdir /app
-</code></pre>
-<h3 id="flaskapppy">flask/<code>app.py</code></h3>
-<p>pythonの<a href="https://github.com/prometheus/client_python">PrometheusClientライブラリ</a>を使ってexporter化しましした。testしやすいように<code>curl http://localhost:3000/hoge</code>でGauge型のmetricsが増減するexporterです。</p>
-<pre><code>from flask import Flask,render_template,request
-import json
-import queue
-from werkzeug.middleware.dispatcher import DispatcherMiddleware
-from prometheus_client import make_wsgi_app,Gauge
-
-app = Flask(__name__)
-G1 = Gauge('Gauge1','Gauge test')
-G2 = Gauge('Gauge2','Gauge test')
-
-@app.route('/upG1',methods=[&quot;GET&quot;])
-def upG1():
-    G1.inc()
-    return &quot;upG1&quot;
-
-@app.route('/upG2',methods=[&quot;GET&quot;])
-def upG2():
-    G2.inc()
-    return &quot;upG2&quot;
-
-@app.route('/downG1',methods=[&quot;GET&quot;])
-def downG1():
-    G1.dec()
-    return &quot;downG1&quot;
-
-@app.route('/downG2',methods=[&quot;GET&quot;])
-def downG2():
-    G2.dec()
-    return &quot;downG2&quot;
-
-app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {
-    '/metrics': make_wsgi_app()
-})
-
-if __name__ == '__main__':
-    G1.set(0)
-    G2.set(0)
-    app.run(host='0.0.0.0',port=5000)
-</code></pre>
-<h3 id="grafanadockerfile">grafana/Dockerfile</h3>
-<p>とりあえず最低限。</p>
-<pre><code>FROM grafana/grafana:master
-COPY ./datasource.yml /etc/grafana/provisioning/datasources/
-</code></pre>
-<h3 id="grafanadatasourceyml">grafana/datasource.yml</h3>
-<p>起動時追加するdatasourceについて書きます。詳しいパラメータについては<a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources">Grafanaの公式ドキュメント</a>に書いてあります。</p>
-<pre><code>datasources:
-  - name: prometheus
-    type: prometheus
-    access: proxy
-    url: &quot;http://prometheus:9090&quot;
- # 複数書きたい場合はこんな感じで
- #- name: prometheus
- #  type: prometheus
- #  access: proxy
- #  url: &quot;http://prometheus:9090&quot;
-</code></pre>
-<h3 id="prometheusyml">prometheus.yml</h3>
-<p>15秒間隔でexporterからmetricsを取得するように設定しています。</p>
-<pre><code>global:
-  scrape_interval: 15s
-  evaluation_interval: 15s
-
-scrape_configs:
-  - job_name: 'prometheus'
-    static_configs:
-      - targets: ['flask:5000']
-</code></pre>
-<h3 id="docker-composeyml">docker-compose.yml</h3>
-<p>上で書いていったものをまとめていきます。</p>
-<pre><code>version: &quot;3&quot;
-services:
-  flask:
-    build: ./flask
-    command: python3 app/app.py
-    volumes:
-       - ./flask/app:/app
-    ports:
-       - 5000:5000
-  prometheus:
-    image: prom/prometheus
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - 9090:9090
-  grafana:
-      build: ./grafana
-      ports:
-        - 3000:3000
-      environment:
-        - GF_SECURITY_ADMIN_PASSWORD=password
-        - GF_USERS_ALLOW_SIGN_UP=false
-</code></pre>
-<h3 id="起動確認">起動確認</h3>
-<p><code>docker-compose build</code>と<code>docker-compose up -d</code>を行って３つのコンテナが立ち上がっているのを確認した後、<code>http://localhost:3000</code>でGrafanaへ接続します。ID：<code>admin</code>、PASSWORD：<code>password</code>で<code>sign in</code>し、<code>Configuration</code>&gt;<code>Data Sources</code>に<code>Prometheus</code>があれば完了です。</p>
-<h2 id="dashboardの起動時追加方法について">Dashboardの起動時追加方法について</h2>
-<p>上記DataSourceの起動時追加設定をした後に、進めていきます。</p>
-<h3 id="構成-1">構成</h3>
-<pre><code>├── docker-compose.yml
-├── flask
-│   ├── Dockerfile
-│   └── app
-│       └── app.py
-├── grafana
-│   ├── Dockerfile　#変更します
-│   ├── dashboard.yml　#作成します
-│   ├── datasource.yml　
-│   └── prometheus #作成します
-│       └── &lt;hoge&gt;.json　#作成します
-└── prometheus.yml
-</code></pre>
-<p>dashboardの起動時追加設定ファイル<code>dashboard.yml</code>、dashboardの基盤ファイル<code>&lt;hoge&gt;.json</code>を作成し、それらファイルをコンテナへ置くためにgrafanaの<code>Dockerfile</code>を変更します。</p>
-<h3 id="grafanaprometheushogejson">grafana/prometheus/<hoge>.json</h3>
-<p><code>http://localhost:3000</code>でGrafanaへ接続し、
-<code>Create</code>&gt;<code>Dashboard</code>で起動時に追加したいDashboardの基盤ファイルを作っていきます。<br>
-<img src="Dashboard%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%BA%96%E5%82%99.png" alt="Dashboardの追加準備" title="Dashboardの追加準備"><br>
-<code>Share dashboard</code>&gt;<code>Export</code>&gt;<code>Save to file</code>でJSONファイルを出力し、<code>./grafana/prometheus</code>配下にファイルをおきます。
-<img src="Dashboard%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%BA%96%E5%82%992.png" alt="Dashboardの追加準備2" title="Dashboardの追加準備2"></p>
-<h3 id="grafanadashboardyml">grafana/dashboard.yml</h3>
-<p>起動時追加するdashboardについて書きます。こちらも、詳しいパラメータについては<a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources">Grafanaの公式ドキュメント</a>に書いてあります。</p>
-<pre><code>apiVersion: 1
-providers:
-  - name: 'prometheus metrics'
-    orgId: 1
-    folder: ''
-    folderUid: ''
-    type: file
-    disableDeletion: false
-    updateIntervalSeconds: 10
-    allowUiUpdates: false
-    options:
-      path: /etc/grafana/provisioning/dashboards/prometheus
-      foldersFromFileStructure: true
-</code></pre>
-<h3 id="grafanadockerfile-1">grafana/Dockerfile</h3>
-<p>作成したファイルをコンテナに置くために以下に変更。</p>
-<pre><code>FROM grafana/grafana:master
-COPY ./datasource.yml /etc/grafana/provisioning/datasources/
-COPY ./dashboard.yml /etc/grafana/provisioning/dashboards/ 
-COPY ./prometheus /etc/grafana/provisioning/dashboards/prometheus
-</code></pre>
-<h3 id="起動確認-1">起動確認</h3>
-<p>DataSourceの設定した時と同じく、<code>docker-compose build</code>と<code>docker-compose up -d</code>を行って３つのコンテナが立ち上がっているのを確認した後、<code>http://localhost:3000</code>でGrafanaへ接続します。ID：<code>admin</code>、PASSWORD：<code>password</code>で<code>sign in</code>し、dashboardsが自動作成されていれば完了です。</p>
-
-  </main>
-  <div id="disqus-container">
+<main id="main">
+  <h1>Grafana</h1>
   
-    <button id="disqus-button" onclick="showComments()">Show comments</button>
-    <div id="disqus-comments">
-      
-      
-      
-        <div id="disqus_thread">
-        </div>
-        <script type="application/javascript">
-          function showComments() {
-            // Config
-var disqus_config = function () {
-};
-// Build and append comments 
-var d = document;
-var s = d.createElement('script');
-s.async = true;
-s.src = '//' + "srn221B" + '.disqus.com/embed.js';
-s.setAttribute('data-timestamp', + new Date());
-(d.head || d.body).appendChild(s);
-            // Remove button
-var disqusButton = document.getElementById('disqus-button');
-disqusButton.parentNode.removeChild(disqusButton); 
-// Un-hide comments
-var disqusComments = document.getElementById('disqus-comments');
-disqusComments.style.display = 'block'; 
-          }
-        </script>
-      
-      <noscript>Enable JavaScript to view Disqus comments.</noscript>
-    </div>
+  <input
+    id="search"
+    type="text"
+    placeholder="Search by title..."
+    aria-label="Search by title"
+  />
   
-</div>
-
+  <ul class="patterns-list" id="list">
+    
+    <li>
+      <h2>
+        <a href="/content4/">
+          <svg
+            class="bookmark"
+            aria-hidden="true"
+            viewBox="0 0 40 50"
+            focusable="false"
+          >
+            <use xlink:href="#bookmark"></use>
+          </svg>
+          Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法
+        </a>
+      </h2>
+    </li>
+    
+  </ul>
+</main>
 
           
             <footer role="contentinfo">
