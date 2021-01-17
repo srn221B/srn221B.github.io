@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>zeppelin on 467のメモ帳</title>
+    <title>zeppelin on 467 notes</title>
     <link>https://srn221B.github.io/tags/zeppelin/</link>
-    <description>Recent content in zeppelin on 467のメモ帳</description>
+    <description>Recent content in zeppelin on 467 notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 20 Sep 2020 20:51:54 +0900</lastBuildDate>
+    <language>en</language>
+    <lastBuildDate>Sun, 17 Jan 2021 20:54:56 +0900</lastBuildDate>
     
 	<atom:link href="https://srn221B.github.io/tags/zeppelin/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法</title>
+      <link>https://srn221B.github.io/content4/</link>
+      <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
+      
+      <guid>https://srn221B.github.io/content4/</guid>
+      <description>こんにちは ブログ書くの久々すぎて書き方忘れた。うそです。
+去年の卒研終わったあたりから作り始めたこのサイトですが、あまりにも初期状態すぎたので、重い腰をあげて「HugoのthemaをBeautifulHugoからCupperに変更」「repositoryを整理」の２点をしました。一新したのでブログ書くモチベもこれで上がるはず（？）仕事もだいぶ慣れてきたので2022年は些細なことでももう少し書いていきたいな。。。
+タイトル通り 「Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法」のメモを簡単に備忘録としてまとめておきます。
+Datasourceの起動時追加方法について Dashboardの起動時追加を設定する前に、まずはこっちを作っていきます。
+構成 . ├── docker-compose.yml ├── flask │ ├── Dockerfile │ └── app │ └── app.py ├── grafana │ ├── Dockerfile │ └── datasource.yml └── prometheus.yml  ここでは grafanaで可視化するサーバーはprometheusで、prometheusでの監視はflaskを用いた自作exporterとしています。
+flask Dockerfile FROM ubuntu:latest RUN apt-get update RUN apt-get install python3 python3-pip -y RUN pip3 install flask prometheus-client RUN mkdir /app  app.py pythonのPrometheusClientライブラリを使ってexporter化しましした。testしやすいようにcurl http://localhost:3000/hogeでGauge型のmetricsが増減するexporterです。
+from flask import Flask,render_template,request import json import queue from werkzeug.middleware.dispatcher import DispatcherMiddleware from prometheus_client import make_wsgi_app,Gauge app = Flask(__name__) G1 = Gauge(&#39;Gauge1&#39;,&#39;Gauge test&#39;) G2 = Gauge(&#39;Gauge2&#39;,&#39;Gauge test&#39;) @app.</description>
+    </item>
+    
+    <item>
       <title>zeppelinからcassandraとsparkを使う</title>
-      <link>https://srn221B.github.io/post/content3/</link>
+      <link>https://srn221B.github.io/content3/</link>
       <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
       
-      <guid>https://srn221B.github.io/post/content3/</guid>
+      <guid>https://srn221B.github.io/content3/</guid>
       <description>タイトル通り。zeppelinからcassandraとsparkを使うまで簡単に構築メモ。 kubernetesとhelm 3.3.1を使って構築する。sparkとzeppelinのインストール→Cassandraのインストールの流れで説明。
 Pod単位で弄れるが為だけにkubernetesを使います。Namespace分けたりIngress追加したりなどIaCならではの機能を活かした実装はここではしません。悪しからず。
-sparkとzeppelin  リポジトリはこれ デプロイすると、MasterPod1台、WorkerPod1台が動く。 Zepplin上のファイルはデフォルトで記憶される。  values.yamlにおいてServicePortの編集  デフォルトのままだとsparkWebUIとzeppelinのServicePortが競合する。なので、どちらかのServicePortを変更する。 ここではsparkWebUIのServicePortを8080から8081に変更する。  $ vim spark/values.yaml ... WebUi: Name: webui ServicePort: 8081 ContainerPort: 8080 ... インストール $ helm install spark ./spark インストール確認  defaultのnamespaceにインストールされていることを確認。  $ kubectl get pod spark-master-877d79587-shv7g 1/1 Running spark-worker-87d4579f4-7fsg4 1/1 Running spark-worker-87d4579f4-lb7ft 1/1 Running spark-worker-87d4579f4-tvcnb 1/1 Running spark-zeppelin-85d6c884d8-289mb 1/1 Running zeppelinとSparkWebUIにアクセスの確認  ブラウザ上からlocalhost:8080とlocalhost:8081へのアクセスへの確認ができれば完了。
-  cassandra  リポジトリはこれ user/passwordを設定しやすそうだったのでbitnamiを選択。  values.yamlにおいてuser/passwordの編集  デフォルトのままだとuserはcassandra、passwordはランダムで作られる。なので、指定したもので作られるように設定する。 ここではuserをcassandra、passwordをcassandraとする。  .</description>
+sparkとzeppelin  リポジトリはこれ デプロイすると、MasterPod1台、WorkerPod1台が動く。 Zepplin上のファイルはデフォルトで記憶される。  values.yamlにおいてServicePortの編集  デフォルトのままだとsparkWebUIとzeppelinのServicePortが競合する。なので、どちらかのServicePortを変更する。 ここではsparkWebUIのServicePortを8080から8081に変更する。  $ vim spark/values.yaml  ... WebUi: Name: webui ServicePort: 8081 ContainerPort: 8080 ...  インストール $ helm install spark ./spark  インストール確認  defaultのnamespaceにインストールされていることを確認。  $ kubectl get pod  spark-master-877d79587-shv7g 1/1 Running spark-worker-87d4579f4-7fsg4 1/1 Running spark-worker-87d4579f4-lb7ft 1/1 Running spark-worker-87d4579f4-tvcnb 1/1 Running spark-zeppelin-85d6c884d8-289mb 1/1 Running  zeppelinとSparkWebUIにアクセスの確認  ブラウザ上からlocalhost:8080とlocalhost:8081へのアクセスへの確認ができれば完了。
+  cassandra  リポジトリはこれ user/passwordを設定しやすそうだったのでbitnamiを選択。  values.</description>
     </item>
     
   </channel>
