@@ -17,7 +17,7 @@
       <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
       
       <guid>https://srn221B.github.io/content4/</guid>
-      <description>ブログ書くの久々すぎて書き方忘れた。。。うそです。
+      <description>こんにちは ブログ書くの久々すぎて書き方忘れた。。。うそです。
 去年の卒研終わったあたりから作り始めたこのサイトですが、あまりにも初期状態すぎたので、重い腰をあげて「HugoのthemaをBeautifulHugoからCupperに変更」「repositoryを整理」の２点をしました。一新したのでブログ書くモチベもこれで上がるはず（？）仕事もだいぶ慣れてきたので2022年は些細なことでももう少し書いていきたいな。。。
 タイトル通り 「Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法」のメモを簡単に備忘録としてまとめておきます。
 Datasourceの起動時追加 Dashboardの起動時追加を設定する前に、まずはこっちを作っていきます。
