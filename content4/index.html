@@ -499,41 +499,6 @@ COPY ./prometheus /etc/grafana/provisioning/dashboards/prometheus
 <p>DataSourceの設定した時と同じく、<code>docker-compose build</code>と<code>docker-compose up -d</code>を行って３つのコンテナが立ち上がっているのを確認した後、<code>http://localhost:3000</code>でGrafanaへ接続します。ID：<code>admin</code>、PASSWORD：<code>password</code>で<code>sign in</code>し、dashboardsが自動作成されていれば完了です。</p>
 
   </main>
-  <div id="disqus-container">
-  
-    <button id="disqus-button" onclick="showComments()">Show comments</button>
-    <div id="disqus-comments">
-      
-      
-      
-        <div id="disqus_thread">
-        </div>
-        <script type="application/javascript">
-          function showComments() {
-            // Config
-var disqus_config = function () {
-};
-// Build and append comments 
-var d = document;
-var s = d.createElement('script');
-s.async = true;
-s.src = '//' + "srn221B" + '.disqus.com/embed.js';
-s.setAttribute('data-timestamp', + new Date());
-(d.head || d.body).appendChild(s);
-            // Remove button
-var disqusButton = document.getElementById('disqus-button');
-disqusButton.parentNode.removeChild(disqusButton); 
-// Un-hide comments
-var disqusComments = document.getElementById('disqus-comments');
-disqusComments.style.display = 'block'; 
-          }
-        </script>
-      
-      <noscript>Enable JavaScript to view Disqus comments.</noscript>
-    </div>
-  
-</div>
-
 
           
             <footer role="contentinfo">
