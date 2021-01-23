@@ -136,6 +136,8 @@
           
         </div>
         
+        <img src="https://467tn.com/images/post/content4.png" class="img-fluid w-100 mb-4" alt="Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法">
+        
         <div class="content mb-5">
           <h2 id="こんにちは">こんにちは</h2>
 <p>ブログ書くの久々すぎて書き方忘れた。。。うそです。<br>
@@ -165,95 +167,95 @@ RUN pip3 install flask prometheus-client
 RUN mkdir /app
 </code></pre><h3 id="flaskapppy">flask/<code>app.py</code></h3>
 <p>pythonの<a href="https://github.com/prometheus/client_python">PrometheusClientライブラリ</a>を使ってexporter化しましした。testしやすいように<code>curl http://localhost:3000/hoge</code>でGauge型のmetricsが増減するexporterです。</p>
-<pre><code>from flask import Flask,render_template,request
-import json
-import queue
-from werkzeug.middleware.dispatcher import DispatcherMiddleware
-from prometheus_client import make_wsgi_app,Gauge
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask,render_template,request
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">import</span> queue
+<span style="color:#f92672">from</span> werkzeug.middleware.dispatcher <span style="color:#f92672">import</span> DispatcherMiddleware
+<span style="color:#f92672">from</span> prometheus_client <span style="color:#f92672">import</span> make_wsgi_app,Gauge
 
-app = Flask(__name__)
-G1 = Gauge('Gauge1','Gauge test')
-G2 = Gauge('Gauge2','Gauge test')
+app <span style="color:#f92672">=</span> Flask(__name__)
+G1 <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db74">&#39;Gauge1&#39;</span>,<span style="color:#e6db74">&#39;Gauge test&#39;</span>)
+G2 <span style="color:#f92672">=</span> Gauge(<span style="color:#e6db74">&#39;Gauge2&#39;</span>,<span style="color:#e6db74">&#39;Gauge test&#39;</span>)
 
-@app.route('/upG1',methods=[&quot;GET&quot;])
-def upG1():
-    G1.inc()
-    return &quot;upG1&quot;
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/upG1&#39;</span>,methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;GET&#34;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">upG1</span>():
+    G1<span style="color:#f92672">.</span>inc()
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;upG1&#34;</span>
 
-@app.route('/upG2',methods=[&quot;GET&quot;])
-def upG2():
-    G2.inc()
-    return &quot;upG2&quot;
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/upG2&#39;</span>,methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;GET&#34;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">upG2</span>():
+    G2<span style="color:#f92672">.</span>inc()
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;upG2&#34;</span>
 
-@app.route('/downG1',methods=[&quot;GET&quot;])
-def downG1():
-    G1.dec()
-    return &quot;downG1&quot;
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/downG1&#39;</span>,methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;GET&#34;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">downG1</span>():
+    G1<span style="color:#f92672">.</span>dec()
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;downG1&#34;</span>
 
-@app.route('/downG2',methods=[&quot;GET&quot;])
-def downG2():
-    G2.dec()
-    return &quot;downG2&quot;
+<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/downG2&#39;</span>,methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;GET&#34;</span>])
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">downG2</span>():
+    G2<span style="color:#f92672">.</span>dec()
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;downG2&#34;</span>
 
-app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {
-    '/metrics': make_wsgi_app()
+app<span style="color:#f92672">.</span>wsgi_app <span style="color:#f92672">=</span> DispatcherMiddleware(app<span style="color:#f92672">.</span>wsgi_app, {
+    <span style="color:#e6db74">&#39;/metrics&#39;</span>: make_wsgi_app()
 })
 
-if __name__ == '__main__':
-    G1.set(0)
-    G2.set(0)
-    app.run(host='0.0.0.0',port=5000)
-</code></pre><h3 id="grafanadockerfile">grafana/Dockerfile</h3>
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    G1<span style="color:#f92672">.</span>set(<span style="color:#ae81ff">0</span>)
+    G2<span style="color:#f92672">.</span>set(<span style="color:#ae81ff">0</span>)
+    app<span style="color:#f92672">.</span>run(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;0.0.0.0&#39;</span>,port<span style="color:#f92672">=</span><span style="color:#ae81ff">5000</span>)
+</code></pre></div><h3 id="grafanadockerfile">grafana/Dockerfile</h3>
 <p>とりあえず最低限。</p>
-<pre><code>FROM grafana/grafana:master
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">FROM grafana/grafana:master
 COPY ./datasource.yml /etc/grafana/provisioning/datasources/
-</code></pre><h3 id="grafanadatasourceyml">grafana/datasource.yml</h3>
+</code></pre></div><h3 id="grafanadatasourceyml">grafana/datasource.yml</h3>
 <p>起動時追加するdatasourceについて書きます。詳しいパラメータについては<a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources">Grafanaの公式ドキュメント</a>に書いてあります。</p>
-<pre><code>datasources:
-  - name: prometheus
-    type: prometheus
-    access: proxy
-    url: &quot;http://prometheus:9090&quot;
- # 複数書きたい場合はこんな感じで
- #- name: prometheus
- #  type: prometheus
- #  access: proxy
- #  url: &quot;http://prometheus:9090&quot;
-</code></pre><h3 id="prometheusyml">prometheus.yml</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">datasources</span>:
+  - <span style="color:#66d9ef">name</span>: prometheus
+    <span style="color:#66d9ef">type</span>: prometheus
+    <span style="color:#66d9ef">access</span>: proxy
+    <span style="color:#66d9ef">url</span>: <span style="color:#e6db74">&#34;http://prometheus:9090&#34;</span>
+ <span style="color:#75715e"># 複数書きたい場合はこんな感じで</span>
+ <span style="color:#75715e">#- name: prometheus</span>
+ <span style="color:#75715e">#  type: prometheus</span>
+ <span style="color:#75715e">#  access: proxy</span>
+ <span style="color:#75715e">#  url: &#34;http://prometheus:9090&#34;</span>
+</code></pre></div><h3 id="prometheusyml">prometheus.yml</h3>
 <p>15秒間隔でexporterからmetricsを取得するように設定しています。</p>
-<pre><code>global:
-  scrape_interval: 15s
-  evaluation_interval: 15s
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">global</span>:
+  <span style="color:#66d9ef">scrape_interval</span>: 15s
+  <span style="color:#66d9ef">evaluation_interval</span>: 15s
 
-scrape_configs:
-  - job_name: 'prometheus'
-    static_configs:
-      - targets: ['flask:5000']
-</code></pre><h3 id="docker-composeyml">docker-compose.yml</h3>
+<span style="color:#66d9ef">scrape_configs</span>:
+  - <span style="color:#66d9ef">job_name</span>: <span style="color:#e6db74">&#39;prometheus&#39;</span>
+    <span style="color:#66d9ef">static_configs</span>:
+      - <span style="color:#66d9ef">targets</span>: [<span style="color:#e6db74">&#39;flask:5000&#39;</span>]
+</code></pre></div><h3 id="docker-composeyml">docker-compose.yml</h3>
 <p>上で書いていったものをまとめていきます。</p>
-<pre><code>version: &quot;3&quot;
-services:
-  flask:
-    build: ./flask
-    command: python3 app/app.py
-    volumes:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+<span style="color:#66d9ef">services</span>:
+  <span style="color:#66d9ef">flask</span>:
+    <span style="color:#66d9ef">build</span>: ./flask
+    <span style="color:#66d9ef">command</span>: python3 app/app.py
+    <span style="color:#66d9ef">volumes</span>:
        - ./flask/app:/app
-    ports:
-       - 5000:5000
-  prometheus:
-    image: prom/prometheus
-    volumes:
+    <span style="color:#66d9ef">ports</span>:
+       - <span style="color:#ae81ff">5000</span>:<span style="color:#ae81ff">5000</span>
+  <span style="color:#66d9ef">prometheus</span>:
+    <span style="color:#66d9ef">image</span>: prom/prometheus
+    <span style="color:#66d9ef">volumes</span>:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - 9090:9090
-  grafana:
-      build: ./grafana
-      ports:
-        - 3000:3000
-      environment:
+    <span style="color:#66d9ef">ports</span>:
+      - <span style="color:#ae81ff">9090</span>:<span style="color:#ae81ff">9090</span>
+  <span style="color:#66d9ef">grafana</span>:
+      <span style="color:#66d9ef">build</span>: ./grafana
+      <span style="color:#66d9ef">ports</span>:
+        - <span style="color:#ae81ff">3000</span>:<span style="color:#ae81ff">3000</span>
+      <span style="color:#66d9ef">environment</span>:
         - GF_SECURITY_ADMIN_PASSWORD=password
-        - GF_USERS_ALLOW_SIGN_UP=false
-</code></pre><h3 id="起動確認">起動確認</h3>
+        - GF_USERS_ALLOW_SIGN_UP=<span style="color:#66d9ef">false</span>
+</code></pre></div><h3 id="起動確認">起動確認</h3>
 <p><code>docker-compose build</code>と<code>docker-compose up -d</code>を行って３つのコンテナが立ち上がっているのを確認した後、<code>http://localhost:3000</code>でGrafanaへ接続します。ID：<code>admin</code>、PASSWORD：<code>password</code>で<code>sign in</code>し、<code>Configuration</code>&gt;<code>Data Sources</code>に<code>Prometheus</code>があれば完了です。</p>
 <h2 id="dashboardの起動時追加方法について">Dashboardの起動時追加方法について</h2>
 <p>上記DataSourceの起動時追加設定をした後に、進めていきます。</p>
@@ -279,26 +281,26 @@ services:
 <img src="Dashboard%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%BA%96%E5%82%992.png" alt="Dashboardの追加準備2" title="Dashboardの追加準備2"></p>
 <h3 id="grafanadashboardyml">grafana/dashboard.yml</h3>
 <p>起動時追加するdashboardについて書きます。こちらも、詳しいパラメータについては<a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources">Grafanaの公式ドキュメント</a>に書いてあります。</p>
-<pre><code>apiVersion: 1
-providers:
-  - name: 'prometheus metrics'
-    orgId: 1
-    folder: ''
-    folderUid: ''
-    type: file
-    disableDeletion: false
-    updateIntervalSeconds: 10
-    allowUiUpdates: false
-    options:
-      path: /etc/grafana/provisioning/dashboards/prometheus
-      foldersFromFileStructure: true
-</code></pre><h3 id="grafanadockerfile-1">grafana/Dockerfile</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">providers</span>:
+  - <span style="color:#66d9ef">name</span>: <span style="color:#e6db74">&#39;prometheus metrics&#39;</span>
+    <span style="color:#66d9ef">orgId</span>: <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">folder</span>: <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#66d9ef">folderUid</span>: <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#66d9ef">type</span>: file
+    <span style="color:#66d9ef">disableDeletion</span>: <span style="color:#66d9ef">false</span>
+    <span style="color:#66d9ef">updateIntervalSeconds</span>: <span style="color:#ae81ff">10</span>
+    <span style="color:#66d9ef">allowUiUpdates</span>: <span style="color:#66d9ef">false</span>
+    <span style="color:#66d9ef">options</span>:
+      <span style="color:#66d9ef">path</span>: /etc/grafana/provisioning/dashboards/prometheus
+      <span style="color:#66d9ef">foldersFromFileStructure</span>: <span style="color:#66d9ef">true</span>
+</code></pre></div><h3 id="grafanadockerfile-1">grafana/Dockerfile</h3>
 <p>作成したファイルをコンテナに置くために以下に変更。</p>
-<pre><code>FROM grafana/grafana:master
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">FROM grafana/grafana:master
 COPY ./datasource.yml /etc/grafana/provisioning/datasources/
 COPY ./dashboard.yml /etc/grafana/provisioning/dashboards/ 
 COPY ./prometheus /etc/grafana/provisioning/dashboards/prometheus
-</code></pre><h3 id="起動確認-1">起動確認</h3>
+</code></pre></div><h3 id="起動確認-1">起動確認</h3>
 <p>DataSourceの設定した時と同じく、<code>docker-compose build</code>と<code>docker-compose up -d</code>を行って３つのコンテナが立ち上がっているのを確認した後、<code>http://localhost:3000</code>でGrafanaへ接続します。ID：<code>admin</code>、PASSWORD：<code>password</code>で<code>sign in</code>し、dashboardsが自動作成されていれば完了です。</p>
 
         </div>
@@ -352,6 +354,10 @@ COPY ./prometheus /etc/grafana/provisioning/dashboards/prometheus
       <div class="col-lg-3 col-sm-6 mb-5">
         <h6 class="mb-4">Quick Links</h6>
         <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="https://filmarks.com/users/467">Filmarks</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="http://animetick.net/users/srn221B">Animetick</a></li>
           
         </ul>
       </div>

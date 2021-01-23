@@ -46,7 +46,7 @@ Scala、何で開発してますか
 VScode，AtomなどのエディタやEclipse，NetBeansなどのIDE，開発内容によって様々だと思います。
 自分は簡単なコードだとScala(Metals)とScalaSnippetsの拡張機能を入れてVscodeを利用，Pluginを利用するものだったり複雑なコードだとIntelliJ IDEAを利用しています。
 SparkアプリケーションをIntelliJ IDEAで開発する方法がとても便利だったので記録に残しておきます。
-前提条件  Spark2.4がインストールされていること IntelliJIDEAがインストールされていること IntelliJIDEAでScalaを開発することができること</description>
+前提条件  Spark2.4がインストールされていること IntelliJIDEAがインストールされていること IntelliJIDEAでScalaを開発することができること Java8がインストールされていること JDK8を用いて開発できること</description>
     </item>
     
     <item>
