@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>技術 on 467 notes </title>
-    <link>/categories/%E6%8A%80%E8%A1%93/</link>
+    <link>https://467tn.com/categories/%E6%8A%80%E8%A1%93/</link>
     <description>Recent content in 技術 on 467 notes </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 17 Jan 2021 20:54:56 +0900</lastBuildDate>
     
-	<atom:link href="/categories/%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://467tn.com/categories/%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法</title>
-      <link>/blog/content4/</link>
+      <link>https://467tn.com/blog/content4/</link>
       <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
       
-      <guid>/blog/content4/</guid>
+      <guid>https://467tn.com/blog/content4/</guid>
       <description>こんにちは ブログ書くの久々すぎて書き方忘れた。。。うそです。
 去年の卒研終わったあたりから作り始めたこのサイトですが、あまりにも初期状態すぎたので、重い腰をあげて「HugoのthemaをBeautifulHugoからCupperに変更」「repositoryを整理」の２点をしました。一新したのでブログ書くモチベもこれで上がるはず（？）仕事もだいぶ慣れてきたので2022年は些細なことでももう少し書いていきたいな。。。
 タイトル通り 「Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法」のメモを簡単に備忘録としてまとめておきます。
@@ -26,10 +26,10 @@ Datasourceの起動時追加 Dashboardの起動時追加を設定する前に、
     
     <item>
       <title>zeppelinからcassandraとsparkを使う</title>
-      <link>/blog/content3/</link>
+      <link>https://467tn.com/blog/content3/</link>
       <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
       
-      <guid>/blog/content3/</guid>
+      <guid>https://467tn.com/blog/content3/</guid>
       <description>タイトル通り。zeppelinからcassandraとsparkを使うまで簡単に構築メモ。 kubernetesとhelm 3.3.1を使って構築する。sparkとzeppelinのインストール→Cassandraのインストールの流れで説明。
 Pod単位で弄れるが為だけにkubernetesを使います。Namespace分けたりIngress追加したりなどIaCならではの機能を活かした実装はここではしません。悪しからず。
 sparkとzeppelin  リポジトリはこれ デプロイすると、MasterPod1台、WorkerPod1台が動く。 Zepplin上のファイルはデフォルトで記憶される。  values.</description>
@@ -37,10 +37,10 @@ sparkとzeppelin  リポジトリはこれ デプロイすると、MasterPod1台
     
     <item>
       <title>IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）</title>
-      <link>/blog/content2/</link>
+      <link>https://467tn.com/blog/content2/</link>
       <pubDate>Sat, 04 Apr 2020 15:40:59 +0900</pubDate>
       
-      <guid>/blog/content2/</guid>
+      <guid>https://467tn.com/blog/content2/</guid>
       <description>前回に引き続きSpark環境構築系のおはなし。
 Scala、何で開発してますか
 VScode，AtomなどのエディタやEclipse，NetBeansなどのIDE，開発内容によって様々だと思います。
@@ -51,10 +51,10 @@ SparkアプリケーションをIntelliJ IDEAで開発する方法がとても�
     
     <item>
       <title>pysparkをjupyter-notebookから使う</title>
-      <link>/blog/content1/</link>
+      <link>https://467tn.com/blog/content1/</link>
       <pubDate>Sat, 28 Mar 2020 00:08:00 +0900</pubDate>
       
-      <guid>/blog/content1/</guid>
+      <guid>https://467tn.com/blog/content1/</guid>
       <description>今までpysparkをいじるときはコンソールでネチネチやっていたのですが、 pythonをjupyter-notebookで開発しているときに便利だなあと思ったので、思い切ってpysparkをいじるときもjupyter-notebookを使うようにしました。その時の備忘録。
 前提条件  Sparkがインストールされていること（この記事がわかりやすかったです。) jupyterがインストールされていること(pipまたはcondaでインストール)  環境  OS：Mac python：Python 3.</description>
     </item>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on 467 notes </title>
-    <link>/tags/docker/</link>
+    <link>https://467tn.com/tags/docker/</link>
     <description>Recent content in Docker on 467 notes </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 17 Jan 2021 20:54:56 +0900</lastBuildDate>
     
-	<atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://467tn.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法</title>
-      <link>/blog/content4/</link>
+      <link>https://467tn.com/blog/content4/</link>
       <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
       
-      <guid>/blog/content4/</guid>
+      <guid>https://467tn.com/blog/content4/</guid>
       <description>こんにちは ブログ書くの久々すぎて書き方忘れた。。。うそです。
 去年の卒研終わったあたりから作り始めたこのサイトですが、あまりにも初期状態すぎたので、重い腰をあげて「HugoのthemaをBeautifulHugoからCupperに変更」「repositoryを整理」の２点をしました。一新したのでブログ書くモチベもこれで上がるはず（？）仕事もだいぶ慣れてきたので2022年は些細なことでももう少し書いていきたいな。。。
 タイトル通り 「Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法」のメモを簡単に備忘録としてまとめておきます。

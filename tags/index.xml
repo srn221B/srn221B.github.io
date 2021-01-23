@@ -2,111 +2,111 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 467 notes </title>
-    <link>/tags/</link>
+    <link>https://467tn.com/tags/</link>
     <description>Recent content in Tags on 467 notes </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 17 Jan 2021 20:54:56 +0900</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://467tn.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Docker</title>
-      <link>/tags/docker/</link>
+      <link>https://467tn.com/tags/docker/</link>
       <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
       
-      <guid>/tags/docker/</guid>
+      <guid>https://467tn.com/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flask</title>
-      <link>/tags/flask/</link>
+      <link>https://467tn.com/tags/flask/</link>
       <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
       
-      <guid>/tags/flask/</guid>
+      <guid>https://467tn.com/tags/flask/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Grafana</title>
-      <link>/tags/grafana/</link>
+      <link>https://467tn.com/tags/grafana/</link>
       <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
       
-      <guid>/tags/grafana/</guid>
+      <guid>https://467tn.com/tags/grafana/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Prometheus</title>
-      <link>/tags/prometheus/</link>
+      <link>https://467tn.com/tags/prometheus/</link>
       <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
       
-      <guid>/tags/prometheus/</guid>
+      <guid>https://467tn.com/tags/prometheus/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cassandra</title>
-      <link>/tags/cassandra/</link>
+      <link>https://467tn.com/tags/cassandra/</link>
       <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
       
-      <guid>/tags/cassandra/</guid>
+      <guid>https://467tn.com/tags/cassandra/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>/tags/kubernetes/</link>
+      <link>https://467tn.com/tags/kubernetes/</link>
       <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
       
-      <guid>/tags/kubernetes/</guid>
+      <guid>https://467tn.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spark</title>
-      <link>/tags/spark/</link>
+      <link>https://467tn.com/tags/spark/</link>
       <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
       
-      <guid>/tags/spark/</guid>
+      <guid>https://467tn.com/tags/spark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>zeppelin</title>
-      <link>/tags/zeppelin/</link>
+      <link>https://467tn.com/tags/zeppelin/</link>
       <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
       
-      <guid>/tags/zeppelin/</guid>
+      <guid>https://467tn.com/tags/zeppelin/</guid>
       <description></description>
     </item>
     
     <item>
       <title>IntelliJIDEA</title>
-      <link>/tags/intellijidea/</link>
+      <link>https://467tn.com/tags/intellijidea/</link>
       <pubDate>Sat, 04 Apr 2020 15:40:59 +0900</pubDate>
       
-      <guid>/tags/intellijidea/</guid>
+      <guid>https://467tn.com/tags/intellijidea/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jupyter</title>
-      <link>/tags/jupyter/</link>
+      <link>https://467tn.com/tags/jupyter/</link>
       <pubDate>Sat, 28 Mar 2020 00:08:00 +0900</pubDate>
       
-      <guid>/tags/jupyter/</guid>
+      <guid>https://467tn.com/tags/jupyter/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pyspark</title>
-      <link>/tags/pyspark/</link>
+      <link>https://467tn.com/tags/pyspark/</link>
       <pubDate>Sat, 28 Mar 2020 00:08:00 +0900</pubDate>
       
-      <guid>/tags/pyspark/</guid>
+      <guid>https://467tn.com/tags/pyspark/</guid>
       <description></description>
     </item>
     
