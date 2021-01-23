@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>zeppelin on 467 notes </title>
-    <link>https://467tn.com/tags/zeppelin/</link>
+    <link>/tags/zeppelin/</link>
     <description>Recent content in zeppelin on 467 notes </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Sep 2020 20:51:54 +0900</lastBuildDate>
     
-	<atom:link href="https://467tn.com/tags/zeppelin/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/zeppelin/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>zeppelinからcassandraとsparkを使う</title>
-      <link>https://467tn.com/blog/content3/</link>
+      <link>/blog/content3/</link>
       <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
       
-      <guid>https://467tn.com/blog/content3/</guid>
+      <guid>/blog/content3/</guid>
       <description>タイトル通り。zeppelinからcassandraとsparkを使うまで簡単に構築メモ。 kubernetesとhelm 3.3.1を使って構築する。sparkとzeppelinのインストール→Cassandraのインストールの流れで説明。
 Pod単位で弄れるが為だけにkubernetesを使います。Namespace分けたりIngress追加したりなどIaCならではの機能を活かした実装はここではしません。悪しからず。
 sparkとzeppelin  リポジトリはこれ デプロイすると、MasterPod1台、WorkerPod1台が動く。 Zepplin上のファイルはデフォルトで記憶される。  values.</description>
