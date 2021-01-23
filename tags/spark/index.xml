@@ -1,48 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>spark on 467 notes</title>
-    <link>https://srn221B.github.io/tags/spark/</link>
-    <description>Recent content in spark on 467 notes</description>
+    <title>spark on 467 notes </title>
+    <link>/tags/spark/</link>
+    <description>Recent content in spark on 467 notes </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
     <lastBuildDate>Sun, 20 Sep 2020 20:51:54 +0900</lastBuildDate>
     
-	<atom:link href="https://srn221B.github.io/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/spark/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>zeppelinからcassandraとsparkを使う</title>
-      <link>https://srn221B.github.io/content3/</link>
+      <link>/blog/content3/</link>
       <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
       
-      <guid>https://srn221B.github.io/content3/</guid>
+      <guid>/blog/content3/</guid>
       <description>タイトル通り。zeppelinからcassandraとsparkを使うまで簡単に構築メモ。 kubernetesとhelm 3.3.1を使って構築する。sparkとzeppelinのインストール→Cassandraのインストールの流れで説明。
 Pod単位で弄れるが為だけにkubernetesを使います。Namespace分けたりIngress追加したりなどIaCならではの機能を活かした実装はここではしません。悪しからず。
-sparkとzeppelin  リポジトリはこれ デプロイすると、MasterPod1台、WorkerPod1台が動く。 Zepplin上のファイルはデフォルトで記憶される。  values.yamlにおいてServicePortの編集  デフォルトのままだとsparkWebUIとzeppelinのServicePortが競合する。なので、どちらかのServicePortを変更する。 ここではsparkWebUIのServicePortを8080から8081に変更する。  $ vim spark/values.yaml  ... WebUi: Name: webui ServicePort: 8081 ContainerPort: 8080 ...  インストール $ helm install spark ./spark  インストール確認  defaultのnamespaceにインストールされていることを確認。  $ kubectl get pod  spark-master-877d79587-shv7g 1/1 Running spark-worker-87d4579f4-7fsg4 1/1 Running spark-worker-87d4579f4-lb7ft 1/1 Running spark-worker-87d4579f4-tvcnb 1/1 Running spark-zeppelin-85d6c884d8-289mb 1/1 Running  zeppelinとSparkWebUIにアクセスの確認  ブラウザ上からlocalhost:8080とlocalhost:8081へのアクセスへの確認ができれば完了。
-  cassandra  リポジトリはこれ user/passwordを設定しやすそうだったのでbitnamiを選択。  values.</description>
+sparkとzeppelin  リポジトリはこれ デプロイすると、MasterPod1台、WorkerPod1台が動く。 Zepplin上のファイルはデフォルトで記憶される。  values.</description>
     </item>
     
     <item>
       <title>IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）</title>
-      <link>https://srn221B.github.io/content2/</link>
+      <link>/blog/content2/</link>
       <pubDate>Sat, 04 Apr 2020 15:40:59 +0900</pubDate>
       
-      <guid>https://srn221B.github.io/content2/</guid>
+      <guid>/blog/content2/</guid>
       <description>前回に引き続きSpark環境構築系のおはなし。
 Scala、何で開発してますか
 VScode，AtomなどのエディタやEclipse，NetBeansなどのIDE，開発内容によって様々だと思います。
 自分は簡単なコードだとScala(Metals)とScalaSnippetsの拡張機能を入れてVscodeを利用，Pluginを利用するものだったり複雑なコードだとIntelliJ IDEAを利用しています。
 SparkアプリケーションをIntelliJ IDEAで開発する方法がとても便利だったので記録に残しておきます。
-前提条件  Spark2.4がインストールされていること IntelliJIDEAがインストールされていること IntelliJIDEAでScalaを開発することができること
-（N予備校のScala基礎コースで開発環境構築方法およびScalaの基礎が大変わかりやすかったです） Java8がインストールされていること JDK8を用いて開発できること
-（[File]=&amp;gt;[Project Structure&amp;hellip;]=&amp;gt;左カラムのSDKsを選択=&amp;gt;JDKhomepathを変更からJDKの追加はできます）  環境  OS：Mac Spark：2.4.5 IntelliJIDEA：2019.3  プロジェクト作成 Scala=&amp;gt;sbt でプロジェクトを作成します。
-Name，Location：任意
-JDK：1.8
-sbt，Scala：現在安定して動くもの（ここではsbt1.2.8，Scala2.11.0）
-入力が終わったら[Finish]を押します。
-Sparkを使えるようにする targetの配下にあるbuild.sbtにSparkのPluginを追加します。バージョンなどはMVNREPOSITORYサイトを参考にします。
-name := &amp;quot;sparktest&amp;quot; version := &amp;quot;0.1&amp;quot; scalaVersion := &amp;quot;2.11.0&amp;quot; libraryDependencies ++= Seq( &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-core&amp;quot; % &amp;quot;2.4.0&amp;quot;, &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-sql&amp;quot; % &amp;quot;2.4.0&amp;quot;, &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-mllib&amp;quot; % &amp;quot;2.4.3&amp;quot;, &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-graphx&amp;quot; % &amp;quot;2.4.0&amp;quot;, &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-streaming&amp;quot; % &amp;quot;2.4.0&amp;quot; )  無事インポートが成功したらSpark環境は完了です。</description>
+前提条件  Spark2.4がインストールされていること IntelliJIDEAがインストールされていること IntelliJIDEAでScalaを開発することができること</description>
     </item>
     
   </channel>

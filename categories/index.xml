@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on 467のメモ帳</title>
-    <link>https://srn221B.github.io/categories/</link>
-    <description>Recent content in Categories on 467のメモ帳</description>
+    <title>Categories on 467 notes </title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on 467 notes </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 04 Apr 2020 15:40:59 +0900</lastBuildDate>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Jan 2021 20:54:56 +0900</lastBuildDate>
     
-	<atom:link href="https://srn221B.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>spark</title>
-      <link>https://srn221B.github.io/categories/spark/</link>
-      <pubDate>Sat, 04 Apr 2020 15:40:59 +0900</pubDate>
+      <title>技術</title>
+      <link>/categories/%E6%8A%80%E8%A1%93/</link>
+      <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
       
-      <guid>https://srn221B.github.io/categories/spark/</guid>
+      <guid>/categories/%E6%8A%80%E8%A1%93/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+  <title>467 notes</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="docker-composeを使っています。">
+  <meta name="author" content="srn221B">
+  <meta name="generator" content="Hugo 0.68.3" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet" href="plugins/slick/slick.css ">
+  
+  <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet" href="plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+
+  <!-- google analitycs -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</head>
+<body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view" href=""><img class="img-fluid"
+          src="images/logo.png" alt="467 notes "></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <div class="desktop-view">
+          <ul class="navbar-nav mr-auto">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://twitter.com/srn221B"><i class="ti-twitter-alt"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/srn221B"><i class="ti-github"></i></a>
+            </li>
+            
+          </ul>
+        </div>
+
+        <a class="navbar-brand mx-auto desktop-view" href=""><img class="img-fluid"
+            src="images/logo.png" alt="467 notes "></a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="about">About</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="blog">Post</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="/search" class="h-100">
+              <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        
+        <a href="/categories/%e6%8a%80%e8%a1%93"
+          class="text-primary">技術</a>
+        
+        <h2>Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法</h2>
+        <div class="mb-3 post-meta">
+          <span>By srn221B</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>17 January 2021</span>
+          
+        </div>
+        
+        <div class="content mb-5">
+          <h2 id="こんにちは">こんにちは</h2>
+<p>ブログ書くの久々すぎて書き方忘れた。。。うそです。<br>
+去年の卒研終わったあたりから作り始めたこのサイトですが、あまりにも初期状態すぎたので、重い腰をあげて「HugoのthemaをBeautifulHugoからCupperに変更」「repositoryを整理」の２点をしました。一新したのでブログ書くモチベもこれで上がるはず（？）仕事もだいぶ慣れてきたので2022年は些細なことでももう少し書いていきたいな。。。<br>
+タイトル通り
+「Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法」のメモを簡単に備忘録としてまとめておきます。</p>
+<h2 id="datasourceの起動時追加">Datasourceの起動時追加</h2>
+<p>Dashboardの起動時追加を設定する前に、まずはこっちを作っていきます。</p>
+<h3 id="構成">構成</h3>
+<pre><code>.
+├── docker-compose.yml
+├── flask
+│   ├── Dockerfile
+│   └── app
+│       └── app.py
+├── grafana
+│   ├── Dockerfile
+│   └── datasource.yml
+└── prometheus.yml
+</code></pre><p>ここでは
+grafanaで可視化するサーバーは<strong>prometheus</strong>で、prometheusでの監視は<strong>flaskを用いた自作exporter</strong>としています。</p>
+<h3 id="flaskdockerfile">flask/Dockerfile</h3>
+<pre><code>FROM ubuntu:latest
+RUN apt-get update
+RUN apt-get install python3 python3-pip -y
+RUN pip3 install flask prometheus-client
+RUN mkdir /app
+</code></pre><h3 id="flaskapppy">flask/<code>app.py</code></h3>
+<p>pythonの<a href="https://github.com/prometheus/client_python">PrometheusClientライブラリ</a>を使ってexporter化しましした。testしやすいように<code>curl http://localhost:3000/hoge</code>でGauge型のmetricsが増減するexporterです。</p>
+<pre><code>from flask import Flask,render_template,request
+import json
+import queue
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
+from prometheus_client import make_wsgi_app,Gauge
+
+app = Flask(__name__)
+G1 = Gauge('Gauge1','Gauge test')
+G2 = Gauge('Gauge2','Gauge test')
+
+@app.route('/upG1',methods=[&quot;GET&quot;])
+def upG1():
+    G1.inc()
+    return &quot;upG1&quot;
+
+@app.route('/upG2',methods=[&quot;GET&quot;])
+def upG2():
+    G2.inc()
+    return &quot;upG2&quot;
+
+@app.route('/downG1',methods=[&quot;GET&quot;])
+def downG1():
+    G1.dec()
+    return &quot;downG1&quot;
+
+@app.route('/downG2',methods=[&quot;GET&quot;])
+def downG2():
+    G2.dec()
+    return &quot;downG2&quot;
+
+app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {
+    '/metrics': make_wsgi_app()
+})
+
+if __name__ == '__main__':
+    G1.set(0)
+    G2.set(0)
+    app.run(host='0.0.0.0',port=5000)
+</code></pre><h3 id="grafanadockerfile">grafana/Dockerfile</h3>
+<p>とりあえず最低限。</p>
+<pre><code>FROM grafana/grafana:master
+COPY ./datasource.yml /etc/grafana/provisioning/datasources/
+</code></pre><h3 id="grafanadatasourceyml">grafana/datasource.yml</h3>
+<p>起動時追加するdatasourceについて書きます。詳しいパラメータについては<a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources">Grafanaの公式ドキュメント</a>に書いてあります。</p>
+<pre><code>datasources:
+  - name: prometheus
+    type: prometheus
+    access: proxy
+    url: &quot;http://prometheus:9090&quot;
+ # 複数書きたい場合はこんな感じで
+ #- name: prometheus
+ #  type: prometheus
+ #  access: proxy
+ #  url: &quot;http://prometheus:9090&quot;
+</code></pre><h3 id="prometheusyml">prometheus.yml</h3>
+<p>15秒間隔でexporterからmetricsを取得するように設定しています。</p>
+<pre><code>global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['flask:5000']
+</code></pre><h3 id="docker-composeyml">docker-compose.yml</h3>
+<p>上で書いていったものをまとめていきます。</p>
+<pre><code>version: &quot;3&quot;
+services:
+  flask:
+    build: ./flask
+    command: python3 app/app.py
+    volumes:
+       - ./flask/app:/app
+    ports:
+       - 5000:5000
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+  grafana:
+      build: ./grafana
+      ports:
+        - 3000:3000
+      environment:
+        - GF_SECURITY_ADMIN_PASSWORD=password
+        - GF_USERS_ALLOW_SIGN_UP=false
+</code></pre><h3 id="起動確認">起動確認</h3>
+<p><code>docker-compose build</code>と<code>docker-compose up -d</code>を行って３つのコンテナが立ち上がっているのを確認した後、<code>http://localhost:3000</code>でGrafanaへ接続します。ID：<code>admin</code>、PASSWORD：<code>password</code>で<code>sign in</code>し、<code>Configuration</code>&gt;<code>Data Sources</code>に<code>Prometheus</code>があれば完了です。</p>
+<h2 id="dashboardの起動時追加方法について">Dashboardの起動時追加方法について</h2>
+<p>上記DataSourceの起動時追加設定をした後に、進めていきます。</p>
+<h3 id="構成-1">構成</h3>
+<pre><code>├── docker-compose.yml
+├── flask
+│   ├── Dockerfile
+│   └── app
+│       └── app.py
+├── grafana
+│   ├── Dockerfile　#変更します
+│   ├── dashboard.yml　#作成します
+│   ├── datasource.yml　
+│   └── prometheus #作成します
+│       └── &lt;hoge&gt;.json　#作成します
+└── prometheus.yml
+</code></pre><p>dashboardの起動時追加設定ファイル<code>dashboard.yml</code>、dashboardの基盤ファイル<code>&lt;hoge&gt;.json</code>を作成し、それらファイルをコンテナへ置くためにgrafanaの<code>Dockerfile</code>を変更します。</p>
+<h3 id="grafanaprometheushogejson">grafana/prometheus/<!-- raw HTML omitted -->.json</h3>
+<p><code>http://localhost:3000</code>でGrafanaへ接続し、
+<code>Create</code>&gt;<code>Dashboard</code>で起動時に追加したいDashboardの基盤ファイルを作っていきます。<br>
+<img src="Dashboard%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%BA%96%E5%82%99.png" alt="Dashboardの追加準備" title="Dashboardの追加準備"><br>
+<code>Share dashboard</code>&gt;<code>Export</code>&gt;<code>Save to file</code>でJSONファイルを出力し、<code>./grafana/prometheus</code>配下にファイルをおきます。
+<img src="Dashboard%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%BA%96%E5%82%992.png" alt="Dashboardの追加準備2" title="Dashboardの追加準備2"></p>
+<h3 id="grafanadashboardyml">grafana/dashboard.yml</h3>
+<p>起動時追加するdashboardについて書きます。こちらも、詳しいパラメータについては<a href="https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources">Grafanaの公式ドキュメント</a>に書いてあります。</p>
+<pre><code>apiVersion: 1
+providers:
+  - name: 'prometheus metrics'
+    orgId: 1
+    folder: ''
+    folderUid: ''
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: false
+    options:
+      path: /etc/grafana/provisioning/dashboards/prometheus
+      foldersFromFileStructure: true
+</code></pre><h3 id="grafanadockerfile-1">grafana/Dockerfile</h3>
+<p>作成したファイルをコンテナに置くために以下に変更。</p>
+<pre><code>FROM grafana/grafana:master
+COPY ./datasource.yml /etc/grafana/provisioning/datasources/
+COPY ./dashboard.yml /etc/grafana/provisioning/dashboards/ 
+COPY ./prometheus /etc/grafana/provisioning/dashboards/prometheus
+</code></pre><h3 id="起動確認-1">起動確認</h3>
+<p>DataSourceの設定した時と同じく、<code>docker-compose build</code>と<code>docker-compose up -d</code>を行って３つのコンテナが立ち上がっているのを確認した後、<code>http://localhost:3000</code>でGrafanaへ接続します。ID：<code>admin</code>、PASSWORD：<code>password</code>で<code>sign in</code>し、dashboardsが自動作成されていれば完了です。</p>
+
+        </div>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center mb-5">
+        <a href=""><img src="images/logo.png" alt="467 notes "></a>
+      </div>
+               
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Contact Me</h6>
+        <ul class="list-unstyled">
+          
+                     
+          <li class="mb-3"><i class="ti-location-pin mr-3 text-primary"></i>Tokyo</li>
+          
+          
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Social Contacts</h6>
+        <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="https://twitter.com/srn221B">twitter</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="https://github.com/srn221B">github</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Categories</h6>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/%e6%8a%80%e8%a1%93">技術</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Quick Links</h6>
+        <ul class="list-unstyled">
+          
+        </ul>
+      </div>
+      <div class="col-12 border-top py-4 text-center">
+        | copyright © 2021 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var indexURL = "index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="plugins/jQuery/jquery.min.js"></script>
+
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="plugins/slick/slick.min.js"></script>
+
+<script src="plugins/venobox/venobox.min.js"></script>
+
+<script src="plugins/search/fuse.min.js"></script>
+
+<script src="plugins/search/mark.js"></script>
+
+<script src="plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="/js/script.min.js"></script>
+
+
+
+
+</body>
+</html>
