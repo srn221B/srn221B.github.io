@@ -155,25 +155,25 @@ pythonをjupyter-notebookで開発しているときに便利だなあと思っ�
 </ul>
 <h2 id="sparkの設定">Sparkの設定</h2>
 <p>Spark上の環境ファイルのテンプレート(<code>spark-env-sh.template</code>)をコピーします。</p>
-<pre><code>$ cd $SPARK_HOME/conf
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd $SPARK_HOME/conf
 $ cp spark-env.sh.template spark-env.sh
-</code></pre><p>コピーしたファイルを書き換えていきます。</p>
-<pre><code>$ vim spark-env.sh
-$ export PYSPARK_PYTHON=/usr/local/bin/python3 #pythonの場所
-$ export PYSPARK_DRIVER_PYTHON=jupyter 
-$ export PYSPARK_DRIVER_PYTHON_OPTS=&quot;notebook&quot;
-</code></pre><h2 id="環境変数の設定">環境変数の設定</h2>
+</code></pre></div><p>コピーしたファイルを書き換えていきます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vim spark-env.sh
+$ export PYSPARK_PYTHON<span style="color:#f92672">=</span>/usr/local/bin/python3 <span style="color:#75715e">#pythonの場所</span>
+$ export PYSPARK_DRIVER_PYTHON<span style="color:#f92672">=</span>jupyter 
+$ export PYSPARK_DRIVER_PYTHON_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;notebook&#34;</span>
+</code></pre></div><h2 id="環境変数の設定">環境変数の設定</h2>
 <p>以下の環境変数を<code>.bashrc</code>,<code>.bash_profile</code>に書きます。</p>
-<pre><code>vim ~/.bashrc
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim ~/.bashrc
 ...
-SPARK_HOME=#Sparkをインストールした場所
-PATH=$SPARK_HOME/bin:$PATH
+SPARK_HOME<span style="color:#f92672">=</span><span style="color:#75715e">#Sparkをインストールした場所</span>
+PATH<span style="color:#f92672">=</span>$SPARK_HOME/bin:$PATH
 ...
-</code></pre><h2 id="動作確認">動作確認</h2>
+</code></pre></div><h2 id="動作確認">動作確認</h2>
 <p>早速、jupyterを使って簡単な演算を実装して見ます。</p>
-<pre><code>$ pyspark
-http://localhost:8888/?token= *Token*が表示されます
-</code></pre><p><a href="http://localhost:8888/login">http://localhost:8888/login</a>を開きます。表示された<strong>Token</strong>を元にログインします。<br>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pyspark
+http://localhost:8888/?token<span style="color:#f92672">=</span> *Token*が表示されます
+</code></pre></div><p><a href="http://localhost:8888/login">http://localhost:8888/login</a>を開きます。表示された<strong>Token</strong>を元にログインします。<br>
 <img src="content1_1.png" alt="login画面"><br>
 Pythonファイルを作ります（<code>New</code>&gt;<code>python3</code>）<br>
 <img src="content1_2.png" alt="ファイル作成画面"> <br>
@@ -188,24 +188,23 @@ Pythonファイルを作ります（<code>New</code>&gt;<code>python3</code>）<
         
       </div>
     </div>
-    <div align=center>
-
-<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2f467tn.com%2fblog%2fcontent1%2f" target="_blank" rel="noopener" aria-label="">
-    <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm3.6 11.5h-2.1v7h-3v-7h-2v-2h2V8.34c0-1.1.35-2.82 2.65-2.82h2.35v2.3h-1.4c-.25 0-.6.13-.6.66V9.5h2.34l-.24 2z"/></svg>
+    <section class="section sns_parent">
+  <div class="container sns_section">
+      <div class="sns_button twitter">
+        <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2f467tn.com%2fblog%2fcontent1%2f&text=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86%20%7c%20467%20notes%20" target="_blank" title="Tweet"><i class="fab fa-twitter"></i></a>
       </div>
-    </div>
-  </a>
-  
-  
-  <a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86｜&url=https%3a%2f%2f467tn.com%2fblog%2fcontent1%2f" target="_blank" rel="noopener" aria-label="">
-    <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm5.26 9.38v.34c0 3.48-2.64 7.5-7.48 7.5-1.48 0-2.87-.44-4.03-1.2 1.37.17 2.77-.2 3.9-1.08-1.16-.02-2.13-.78-2.46-1.83.38.1.8.07 1.17-.03-1.2-.24-2.1-1.3-2.1-2.58v-.05c.35.2.75.32 1.18.33-.7-.47-1.17-1.28-1.17-2.2 0-.47.13-.92.36-1.3C7.94 8.85 9.88 9.9 12.06 10c-.04-.2-.06-.4-.06-.6 0-1.46 1.18-2.63 2.63-2.63.76 0 1.44.3 1.92.82.6-.12 1.95-.27 1.95-.27-.35.53-.72 1.66-1.24 2.04z"/></svg>
+      <div class="sns_button hatena">
+        <a href="http://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2f467tn.com%2fblog%2fcontent1%2f&title=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86%20%7c%20467%20notes%20" target="_blank" title="hatena"><i class="fa fa-hatena"></i></i></a>
       </div>
-    </div>
-  </a>
+      <div class="sns_button facebook">
+        <a href="http://www.facebook.com/sharer.php?u=https%3a%2f%2f467tn.com%2fblog%2fcontent1%2f&t=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86%20%7c%20467%20notes%20" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+      </div>
+      <div class="sns_button pocket">
+        <a href="http://getpocket.com/edit?url=https%3a%2f%2f467tn.com%2fblog%2fcontent1%2f&title=pyspark%e3%82%92jupyter-notebook%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%86%20%7c%20467%20notes%20" target="_blank" title="pocket"><i class="fab fa-get-pocket"></i></a>
+      </div>
+  </div>
+</section>
 
-</div>
   </div>
 </section>
 
