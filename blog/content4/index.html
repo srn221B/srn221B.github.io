@@ -292,7 +292,7 @@ COPY ./datasource.yml /etc/grafana/provisioning/datasources/
 │       └── &lt;hoge&gt;.json　#作成します
 └── prometheus.yml
 </code></pre><p>dashboardの起動時追加設定ファイル<code>dashboard.yml</code>、dashboardの基盤ファイル<code>&lt;hoge&gt;.json</code>を作成し、それらファイルをコンテナへ置くためにgrafanaの<code>Dockerfile</code>を変更します。</p>
-<h3 id="grafanaprometheushogejson">grafana/prometheus/<!-- raw HTML omitted -->.json</h3>
+<h3 id="grafanaprometheushogejson">grafana/prometheus/<hoge>.json</h3>
 <p><code>http://localhost:3000</code>でGrafanaへ接続し、
 <code>Create</code>&gt;<code>Dashboard</code>で起動時に追加したいDashboardの基盤ファイルを作っていきます。<br>
 <img src="Dashboard%E3%81%AE%E8%BF%BD%E5%8A%A0%E6%BA%96%E5%82%99.png" alt="Dashboardの追加準備" title="Dashboardの追加準備"><br>
