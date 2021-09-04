@@ -190,8 +190,15 @@ minikubeでクラスタたてて、Talendで使うためのPod/Service立てて�
 またKubernetesの[チートシート](https://kubernetes.io/ja/docs/reference/kubectl/cheatsheet/)も読みながらできるだけ早く操作できるように意識した。
 個人的に覚えておくといいものは以下ぐらい
 <pre><code>$ alias k=kubectl
-$ kubectl run &lt;Podname&gt; 
-$ kubectl &lt;run/create etc&gt; -h
+# PodとServiceをワンラインで作る
+$ kubectl run &lt;name&gt; --expose --port=&lt;PortNumber&gt;
+# Deployment/RoleなどのResourceをワンラインで作る
+$ kubectl create &lt;Resource&gt; &lt;name&gt;
+# ワンラインで作る時のHelp（大体書いてある）
+$ kubectl &lt;run/create/expose&gt; -h
+# ワンラインで作ったものを実行せず、マニフェストを出力する
+$ kubectl &lt;run/create/expose&gt; --dry-run=client -o yaml &gt; &lt;出力先ファイル名&gt;.yaml
+# Rolebinding/ClusterRolebindingが有効になっているか確認
 $ kubectl auth can-i &lt;create/get etc&gt; --as=&lt;User名/saだとsystem:serviceaccount:namespace:sa&gt;
 </code></pre><p>試験まであと１週間前ぐらいになって</p>
 <p><strong>Networkpolicy全然わかってねえ！</strong> ということに気付き、</p>
