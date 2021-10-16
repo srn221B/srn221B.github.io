@@ -38,6 +38,10 @@
   <!-- Main Stylesheet -->
   
   <link rel="stylesheet" href="https://467tn.com/scss/style.min.css" media="screen">
+  
+  <link rel="stylesheet" href="https://467tn.com/css/custom_heading.css">
+  
+
 
   <!--Favicon-->
   <link rel="shortcut icon" href="https://467tn.com/images/favicon.png" type="image/png">
@@ -299,8 +303,7 @@ Datasourceの起動時追加 Dashboardの起動時追加を設定する前に、
                   
                 </div>
                 <p class="card-text">タイトル通り。zeppelinからcassandraとsparkを使うまで簡単に構築メモ。 kubernetesとhelm 3.3.1を使って構築する。sparkとzeppelinのインストール→Cassandraのインストールの流れで説明。
-Pod単位で弄れるが為だけにkubernetesを使います。Namespace分けたりIngress追加したりなどIaCならではの機能を活かした実装はここではしません。悪しからず。
-sparkとzeppelin  リポジトリはこれ デプロイすると、MasterPod1台、WorkerPod1台が動く。 Zepplin上のファイルはデフォルトで記憶される。  values.</p>
+sparkとzeppelin  リポジトリはこれ デプロイすると、Podが動く。 Zepplin上のファイルはデフォルトで記憶される。  values.yamlにおいてServicePortの編集  デフォルトのままだとsparkWebUIとzeppelinのServicePortが競合する。なので、どちらかのServicePortを変更する。 ここではsparkWebUIのServicePortを8080から8081に変更する。  $ vim spark/values.</p>
                 <a href="https://467tn.com/blog/content3/" class="btn btn-outline-primary">read more</a>
               </div>
             </article>

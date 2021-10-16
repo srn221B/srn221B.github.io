@@ -42,6 +42,10 @@
   <!-- Main Stylesheet -->
   
   <link rel="stylesheet" href="https://467tn.com/scss/style.min.css" media="screen">
+  
+  <link rel="stylesheet" href="https://467tn.com/css/custom_heading.css">
+  
+
 
   <!--Favicon-->
   <link rel="shortcut icon" href="https://467tn.com/images/favicon.png" type="image/png">
@@ -162,12 +166,11 @@
         
         <div class="content mb-5">
           <p>タイトル通り。zeppelinからcassandraとsparkを使うまで<strong>簡単に</strong>構築メモ。
-kubernetesとhelm 3.3.1を使って構築する。<strong>sparkとzeppelinのインストール</strong>→<strong>Cassandraのインストール</strong>の流れで説明。<br>
-Pod単位で弄れるが為だけにkubernetesを使います。Namespace分けたりIngress追加したりなどIaCならではの機能を活かした実装はここではしません。悪しからず。</p>
+kubernetesとhelm 3.3.1を使って構築する。<strong>sparkとzeppelinのインストール</strong>→<strong>Cassandraのインストール</strong>の流れで説明。</p>
 <h2 id="sparkとzeppelin">sparkとzeppelin</h2>
 <ul>
 <li>リポジトリは<a href="https://github.com/helm/charts/tree/master/stable/spark">これ</a></li>
-<li>デプロイすると、MasterPod1台、WorkerPod1台が動く。</li>
+<li>デプロイすると、Podが動く。</li>
 <li>Zepplin上のファイルはデフォルトで記憶される。</li>
 </ul>
 <h3 id="valuesyamlにおいてserviceportの編集"><code>values.yaml</code>においてServicePortの編集</h3>
