@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="spark2.4.5をjupyter-notebook6.0.3から使う方法です。">
   <meta name="author" content="srn221B">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.97.0" />
 <meta property="og:site_name"           content="467 notes ">
 <meta property="og:title"               content="pysparkをjupyter-notebookから使う">
 <meta property="og:url"                 content="https://467tn.com/blog/content1/index.html">
@@ -178,25 +178,25 @@ pythonをjupyter-notebookで開発しているときに便利だなあと思っ�
 </ul>
 <h2 id="sparkの設定">Sparkの設定</h2>
 <p>Spark上の環境ファイルのテンプレート(<code>spark-env-sh.template</code>)をコピーします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd $SPARK_HOME/conf
-$ cp spark-env.sh.template spark-env.sh
-</code></pre></div><p>コピーしたファイルを書き換えていきます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vim spark-env.sh
-$ export PYSPARK_PYTHON<span style="color:#f92672">=</span>/usr/local/bin/python3 <span style="color:#75715e">#pythonの場所</span>
-$ export PYSPARK_DRIVER_PYTHON<span style="color:#f92672">=</span>jupyter 
-$ export PYSPARK_DRIVER_PYTHON_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;notebook&#34;</span>
-</code></pre></div><h2 id="環境変数の設定">環境変数の設定</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd $SPARK_HOME/conf
+</span></span><span style="display:flex;"><span>$ cp spark-env.sh.template spark-env.sh
+</span></span></code></pre></div><p>コピーしたファイルを書き換えていきます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ vim spark-env.sh
+</span></span><span style="display:flex;"><span>$ export PYSPARK_PYTHON<span style="color:#f92672">=</span>/usr/local/bin/python3 <span style="color:#75715e">#pythonの場所</span>
+</span></span><span style="display:flex;"><span>$ export PYSPARK_DRIVER_PYTHON<span style="color:#f92672">=</span>jupyter 
+</span></span><span style="display:flex;"><span>$ export PYSPARK_DRIVER_PYTHON_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;notebook&#34;</span>
+</span></span></code></pre></div><h2 id="環境変数の設定">環境変数の設定</h2>
 <p>以下の環境変数を<code>.bashrc</code>,<code>.bash_profile</code>に書きます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim ~/.bashrc
-...
-SPARK_HOME<span style="color:#f92672">=</span><span style="color:#75715e">#Sparkをインストールした場所</span>
-PATH<span style="color:#f92672">=</span>$SPARK_HOME/bin:$PATH
-...
-</code></pre></div><h2 id="動作確認">動作確認</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim ~/.bashrc
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>SPARK_HOME<span style="color:#f92672">=</span><span style="color:#75715e">#Sparkをインストールした場所</span>
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$SPARK_HOME/bin:$PATH
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h2 id="動作確認">動作確認</h2>
 <p>早速、jupyterを使って簡単な演算を実装して見ます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pyspark
-http://localhost:8888/?token<span style="color:#f92672">=</span> *Token*が表示されます
-</code></pre></div><p><a href="http://localhost:8888/login">http://localhost:8888/login</a>を開きます。表示された<strong>Token</strong>を元にログインします。<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pyspark
+</span></span><span style="display:flex;"><span>http://localhost:8888/?token<span style="color:#f92672">=</span> *Token*が表示されます
+</span></span></code></pre></div><p><a href="http://localhost:8888/login">http://localhost:8888/login</a>を開きます。表示された<strong>Token</strong>を元にログインします。<br>
 <img src="content1_1.png" alt="login画面"><br>
 Pythonファイルを作ります（<code>New</code>&gt;<code>python3</code>）<br>
 <img src="content1_2.png" alt="ファイル作成画面"> <br>

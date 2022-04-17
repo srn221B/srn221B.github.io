@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="kubernetes上で環境構築した時のメモ">
   <meta name="author" content="srn221B">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.97.0" />
 <meta property="og:site_name"           content="467 notes ">
 <meta property="og:title"               content="zeppelinからcassandraとsparkを使う">
 <meta property="og:url"                 content="https://467tn.com/blog/content3/index.html">
@@ -178,21 +178,21 @@ kubernetesとhelm 3.3.1を使って構築する。<strong>sparkとzeppelinのイ
 <li>デフォルトのままだとsparkWebUIとzeppelinのServicePortが競合する。なので、どちらかのServicePortを変更する。</li>
 <li>ここではsparkWebUIのServicePortを8080から8081に変更する。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vim spark/values.yaml
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">...
-<span style="color:#66d9ef">WebUi</span>:
-  <span style="color:#66d9ef">Name</span>: webui
-  <span style="color:#66d9ef">ServicePort</span>: <span style="color:#ae81ff">8081</span>
-  <span style="color:#66d9ef">ContainerPort</span>: <span style="color:#ae81ff">8080</span>
-...
-</code></pre></div><h3 id="インストール">インストール</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ helm install spark ./spark
-</code></pre></div><h3 id="インストール確認">インストール確認</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ vim spark/values.yaml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">WebUi</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Name</span>: <span style="color:#ae81ff">webui</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ServicePort</span>: <span style="color:#ae81ff">8081</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ContainerPort</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h3 id="インストール">インストール</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ helm install spark ./spark
+</span></span></code></pre></div><h3 id="インストール確認">インストール確認</h3>
 <ul>
 <li>defaultのnamespaceにインストールされていることを確認。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pod 
-</code></pre></div><pre><code>spark-master-877d79587-shv7g      1/1       Running   
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get pod 
+</span></span></code></pre></div><pre tabindex="0"><code>spark-master-877d79587-shv7g      1/1       Running   
 spark-worker-87d4579f4-7fsg4      1/1       Running   
 spark-worker-87d4579f4-lb7ft      1/1       Running   
 spark-worker-87d4579f4-tvcnb      1/1       Running  
@@ -213,27 +213,27 @@ spark-zeppelin-85d6c884d8-289mb   1/1       Running
 <li>デフォルトのままだとuserはcassandra、passwordはランダムで作られる。なので、指定したもので作られるように設定する。</li>
 <li>ここではuserをcassandra、passwordをcassandraとする。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">...
-<span style="color:#66d9ef">dbUser</span>:
-  <span style="color:#66d9ef">user</span>: cassandra
-  <span style="color:#66d9ef">forcePassword</span>: <span style="color:#66d9ef">false</span>
-  <span style="color:#66d9ef">password</span>: cassandra
-...
-</code></pre></div><h3 id="インストール-1">インストール</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ helm install cassandra ./cassandra
-</code></pre></div><h3 id="インストール確認-1">インストール確認</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dbUser</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">user</span>: <span style="color:#ae81ff">cassandra</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">forcePassword</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">password</span>: <span style="color:#ae81ff">cassandra</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h3 id="インストール-1">インストール</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ helm install cassandra ./cassandra
+</span></span></code></pre></div><h3 id="インストール確認-1">インストール確認</h3>
 <ul>
 <li>defaultのnamespaceにインストールされていることを確認。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pod -n default
-</code></pre></div><pre><code>cassandra-0                   1/1       Running   
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get pod -n default
+</span></span></code></pre></div><pre tabindex="0"><code>cassandra-0                   1/1       Running   
 </code></pre><h2 id="zeppelin上のcassandraのinterpreter">Zeppelin上のCassandraのInterpreter</h2>
 <ul>
 <li>zeppelinからcassandraへ接続する為の設定を変更。</li>
 </ul>
 <h3 id="cassandraが動いているclusteripを確認">cassandraが動いているClusterIPを確認</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get svc
-</code></pre></div><pre><code>NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                                        AGE
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get svc
+</span></span></code></pre></div><pre tabindex="0"><code>NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                                        AGE
 cassandra            ClusterIP      10.99.62.208    &lt;none&gt;        9042/TCP,9160/TCP,8080/TCP                     1d
 </code></pre><h3 id="interpreterの設定変更">Interpreterの設定変更</h3>
 <ul>
