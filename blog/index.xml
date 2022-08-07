@@ -8,14 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 29 Oct 2019 13:49:23 +0600</lastBuildDate><atom:link href="https://467tn.com/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>学生時代の作ったものの記録</title>
-      <link>https://467tn.com/blog/content6/</link>
-      <pubDate>Fri, 22 Apr 2022 00:08:00 +0900</pubDate>
+      <title>airflowのschedule関連についての雑メモ</title>
+      <link>https://467tn.com/blog/content7/</link>
+      <pubDate>Mon, 08 Aug 2022 00:08:00 +0900</pubDate>
       
-      <guid>https://467tn.com/blog/content6/</guid>
-      <description>概要 学生時代のときに作ったものの知見や思い出を記憶が新しいうちに残しておく。 すぐ忘れてしまうので。
-作ったもの ほぼ時系列に載せていきます。ちなみに学生時代の私の創作意欲の原点は「何かを作りたくて作る」訳ではなく「使う技術について興味があるので作る」ことが多かったので、Web系だったりDB系だったり&amp;hellip;と全体的に一貫性がないです。あと、全体的に作って終わりで、改善をしていない。今から改善しようとしても環境がない。。。
-1. 2017年のアニメの円盤売上分析   なんで作ったの？</description>
+      <guid>https://467tn.com/blog/content7/</guid>
+      <description>概要 Airflowのscheule関連についてしっかりと理解できていなかったので、DataPipelines with ApacheAirflowのCAPTER3「Scheduling in Airflow」を参考にしつつ雑にまとめてみた。
+TL;DR  DAGは「schedule_interval」に設定した間隔で実行される。 「schedule_interval」はcronとtimedeltaインスタンスで書くことができる。 「interval is started」「the end of the interval」 「execution date」は実際の実行時間ではない。 JinjaTemplateを使用して動的に設定することによってデータを段階的に処理できる。 DAGはbackfillを使うと過去分実行ができる。  schedule_intervalについて  DAGの定期的な実行間隔は　airflow.</description>
     </item>
     
     <item>

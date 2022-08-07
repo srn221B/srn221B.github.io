@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+  <title>467 notes</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="雑めも">
+  <meta name="author" content="srn221B">
+  <meta name="generator" content="Hugo 0.97.0" />
+<meta property="og:site_name"           content="467 notes ">
+<meta property="og:title"               content="airflowのschedule関連についての雑メモ">
+<meta property="og:url"                 content="https://467tn.com/blog/content7/index.html">
+<meta property="og:type"                content="article">
+<meta name="twitter:card"               content="summary">
+<meta property="twitter:title"          content="airflowのschedule関連についての雑メモ">
+<meta name="twitter:url" content="https://467tn.com/blog/content7/index.html" />
+
+    
+    <meta property="og:description"         content="雑めも">
+    <meta property="twitter:description"    content="雑めも">
+    
+
+
+    
+    <meta property="og:image"       content="https://467tn.com/images/post/content7.png">
+    <meta property="og:image:url"   content="https://467tn.com/images/post/content7.png">
+    
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="https://467tn.com/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet" href="https://467tn.com/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet" href="https://467tn.com/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet" href="https://467tn.com/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="https://467tn.com/scss/style.min.css" media="screen">
+  
+  <link rel="stylesheet" href="https://467tn.com/css/custom_heading.css">
+  
+
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://467tn.com/images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://467tn.com/images/apple-touch-icon.png">
+
+
+  <!-- google analitycs -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</head>
+<body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view" href="https://467tn.com"><img class="img-fluid"
+          src="https://467tn.com/images/logo.png" alt="467 notes "></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <div class="desktop-view">
+          <ul class="navbar-nav mr-auto">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://twitter.com/srn221B"><i class="ti-twitter-alt"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/srn221B"><i class="ti-github"></i></a>
+            </li>
+            
+          </ul>
+        </div>
+
+        <a class="navbar-brand mx-auto desktop-view" href="https://467tn.com"><img class="img-fluid"
+            src="https://467tn.com/images/logo.png" alt="467 notes "></a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://467tn.com/about">About</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://467tn.com/blog">Post</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://467tn.com/search" class="h-100">
+              <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        
+        <a href="/categories/%e6%8a%80%e8%a1%93"
+          class="text-primary">技術</a>
+        
+        <h2>airflowのschedule関連についての雑メモ</h2>
+        <div class="mb-3 post-meta">
+          <span>By srn221B</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>08 August 2022</span>
+          
+        </div>
+        
+        <img src="https://467tn.com/images/post/content7.png" class="img-fluid w-100 mb-4" alt="airflowのschedule関連についての雑メモ">
+        
+        <div class="content mb-5">
+          <h2 id="概要">概要</h2>
+<p>Airflowのscheule関連についてしっかりと理解できていなかったので、DataPipelines with ApacheAirflowのCAPTER3「Scheduling in Airflow」を参考にしつつ雑にまとめてみた。</p>
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li>DAGは「schedule_interval」に設定した間隔で実行される。</li>
+<li>「schedule_interval」はcronとtimedeltaインスタンスで書くことができる。</li>
+<li>「interval is started」「the end of the interval」</li>
+<li>「execution date」は実際の実行時間ではない。</li>
+<li>JinjaTemplateを使用して動的に設定することによってデータを段階的に処理できる。</li>
+<li>DAGはbackfillを使うと過去分実行ができる。</li>
+</ul>
+<h2 id="schedule_intervalについて">schedule_intervalについて</h2>
+<ul>
+<li>DAGの定期的な実行間隔は　airflow.dagの「scheudle_interval」引数に指定する。</li>
+</ul>
+<h3 id="noneの場合uiもしくはapiからの実行のみがトリガーとなる">「None」の場合、UIもしくはAPIからの実行のみがトリガーとなる。</h3>
+<pre tabindex="0"><code>dag = DAG(
+    dag_id=&#34;unscheduled&#34;,
+    start_date=dt.datetime(2019, 1, 1),
+    schedule_interval=None
+)
+</code></pre><h3 id="cronを使用することができる">「Cron」を使用することができる。</h3>
+<ul>
+<li>0 * * * *</li>
+<li>0 0 * * MON-FRI
+<ul>
+<li>値をrangeで渡すこともできる（例は平日の0時に実行）</li>
+</ul>
+</li>
+<li>0, 0,12 * * *
+<ul>
+<li>値をリストで渡すこともできる（例は0,12時に実行）</li>
+</ul>
+</li>
+</ul>
+<pre tabindex="0"><code>dag = DAG(
+    dag_id=&#34;use_cron&#34;,
+    start_date=dt.datetime(2019, 1, 1),
+    schedule_interval=&#34;0 0 * * *&#34;,
+)
+</code></pre><h3 id="dailyなどのairflowが提供しているmacroも使用することができる">「@daily」などのairflowが提供しているmacroも使用することができる。</h3>
+<ul>
+<li><a href="https://airflow.apache.org/docs/apache-airflow/1.10.4/scheduler.html">https://airflow.apache.org/docs/apache-airflow/1.10.4/scheduler.html</a></li>
+</ul>
+<pre tabindex="0"><code>dag = DAG(
+    dag_id=&#34;use_macro&#34;,
+    start_date=dt.datetime(2019, 1, 1),
+    schedule_interval=&#34;@daily&#34;
+)
+</code></pre><ul>
+<li>上記の場合、初回実行時間は「2019, 1, 2の00:00」
+<ul>
+<li>「start_date」から「schedule_interval」を足した時間(start + interval)が初回実行になるため。
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/289561/cbe483c0-42e4-3dd3-c180-a22a7393be5f.png" alt="スクリーンショット 2022-08-07 15.58.34.png"></li>
+</ul>
+</li>
+</ul>
+<h3 id="timedeltaインスタンスを渡して使用することもできる">「timedeltaインスタンス」を渡して使用することもできる。</h3>
+<p>これによってCronなどで実現できない「n日間隔で実行する」などのschedulingができる。</p>
+<pre tabindex="0"><code>import datetime at dt
+
+dag = DAG(
+    dag_id=&#34;use_timedelta&#34;,
+    schedule_interval=dt.timedelta(day=3),
+    start_date=dt.datetime(year=2019, month=1, day=1),
+)
+</code></pre><ul>
+<li>上記の場合、初回実行時間は「2019,1,4の00:00」
+<ul>
+<li>「start_date=2019,1,1からschedule_interval=３日後(2019,1,3)分の実行となる」</li>
+</ul>
+</li>
+</ul>
+<h3 id="end_dateを使用して最終実行時間を指定することもできる">「end_date」を使用して最終実行時間を指定することもできる。</h3>
+<pre tabindex="0"><code>dag = DAG(
+    dag_id=&#34;use_enddate&#34;,
+    start_date=dt.datetime(2019, 1, 1),
+    schedule_interval=&#34;@daily&#34;,
+    end_date=dt.datetime(2019, 1, 5)
+)
+</code></pre><ul>
+<li>上記の場合、最終実行時間は「2019, 1, 5の00:00」
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/289561/dd523315-030d-dd1a-233e-004f68861307.png" alt="スクリーンショット 2022-08-07 16.00.18.png"></li>
+</ul>
+<h2 id="日付関連のjinja-templateについて">日付関連のJinja Templateについて</h2>
+<ul>
+<li>実行日時を取得したい場合「{{ execution_date }}」を使用してtimestamp型の実行日時を取得することができる。
+<ul>
+<li>YYYY-MM-DDのみ取得したい場合は「{{ ds }}」。</li>
+<li>YYYYMMDDのみ取得したい場合は「{{ ds_nodash }}」。</li>
+</ul>
+</li>
+</ul>
+<h3 id="operatorに直接書くことができる">Operatorに直接書くことができる。</h3>
+<pre tabindex="0"><code>BashOperator(
+    task_id=&#34;fetch_events&#34;,
+    bash_command={
+        &#34;mkdir -p /data/events &amp;&amp; &#34;
+        &#34;start_date={{ds}}&amp;end_date={{next_ds}}&#34;
+    }
+)
+</code></pre><h3 id="引数に渡すこともできる">引数に渡すこともできる。</h3>
+<pre tabindex="0"><code>def _function_test(**context):
+    &#34;&#34;&#34;function test&#34;&#34;&#34;
+    print(f&#34;{context[&#39;templates_dict&#39;][&#39;start_date&#39;]}&#34;
+          f&#34;{context[&#39;templates_dict&#39;][&#39;end_date&#39;]}&#34;)
+
+fetch_events = PythonOperator(
+    task_id=&#34;fetch_events&#34;,
+    python_callable=_function_test,
+    templates_dict={
+        &#34;start_date&#34;: &#34;start_date={{ds}}&#34;,
+        &#34;end_date&#34;: &#34;end_date={{next_ds}}&#34;
+    }
+)
+</code></pre><h3 id="interval-basedな日付の取得の仕方をするので注意">interval-basedな日付の取得の仕方をするので注意</h3>
+<ul>
+<li>例えば、start_dateが2019,1,1でschedule_intervalが@dailyのDAGが初回実行される日付は「2019,1,2」だが、「2019,1,2」のジョブで取得される「{{ds}}」は「2019,1,1(前日)」である。
+<ul>
+<li>そのため、「previous_execution_date」や「next_execution_date」をジョブ内で使用するようなDAGをかく場合は、「start_date」~「end_date」外の値を取得しようとしていないかなど注意が必要。</li>
+</ul>
+</li>
+</ul>
+<h2 id="backfillについて">Backfillについて</h2>
+<ul>
+<li>AirflowにはDAGをactiveにした時に、start_dateからactive時までのスケジュール間隔内で実行されていない過去ジョブがあった場合、自動で実行してくれるBackfillという機能がある。
+<ul>
+<li>３０日以内のみ有効らしい</li>
+</ul>
+</li>
+</ul>
+<h3 id="defaultで有効になっているが無効にしたい場合はcatchupをfalseに">defaultで有効になっているが無効にしたい場合は「catchup」をFalseに</h3>
+<ul>
+<li>dag内に書くこともできるし</li>
+</ul>
+<pre tabindex="0"><code>dag = DAG(
+    dag_id=&#34;catchup_test&#34;,
+    schedule_interval=&#34;@daily&#34;,
+    start_date=dt.datetime(year=2019, month=1, day=1),
+    catchup=False
+)
+</code></pre><ul>
+<li>airflow.cfgの「catchup_by_default」をFalseにすることでもできる。</li>
+</ul>
+<pre tabindex="0"><code>catchup_by_default = False
+</code></pre>
+        </div>
+
+        
+        
+      </div>
+    </div>
+    
+<section class="section sns_parent">
+  <div class="container sns_section">
+      <div class="sns_button twitter">
+        <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2f467tn.com%2fblog%2fcontent7%2findex.html&text=airflow%e3%81%aeschedule%e9%96%a2%e9%80%a3%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6%e3%81%ae%e9%9b%91%e3%83%a1%e3%83%a2" target="_blank" title="Tweet"><i class="fab fa-twitter"></i></a>
+      </div>
+  </div>
+</section>
+
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center mb-5">
+        <a href="https://467tn.com"><img src="https://467tn.com/images/logo.png" alt="467 notes "></a>
+      </div>
+               
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Contact Me</h6>
+        <ul class="list-unstyled">
+          
+                     
+          <li class="mb-3"><i class="ti-location-pin mr-3 text-primary"></i>Tokyo</li>
+          
+          
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Social Contacts</h6>
+        <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="https://twitter.com/srn221B">twitter</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="https://github.com/srn221B">github</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Categories</h6>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/%e6%8a%80%e8%a1%93">技術</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Quick Links</h6>
+        <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="https://filmarks.com/users/467">Filmarks</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="http://animetick.net/users/srn221B">Animetick</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-12 border-top py-4 text-center">
+        | copyright © 2021 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var indexURL = "https://467tn.com/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://467tn.com/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://467tn.com/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://467tn.com/plugins/slick/slick.min.js"></script>
+
+<script src="https://467tn.com/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://467tn.com/plugins/search/fuse.min.js"></script>
+
+<script src="https://467tn.com/plugins/search/mark.js"></script>
+
+<script src="https://467tn.com/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://467tn.com/js/script.min.js"></script>
+
+
+
+
+</body>
+</html>
