@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on 467note</title>
-    <link>https://examplesite.com/post/</link>
+    <link>https://467tn.com/post/</link>
     <description>Recent content in Posts on 467note</description>
     <image>
-      <url>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://467tn.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://467tn.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 19 Sep 2022 11:30:03 +0000</lastBuildDate><atom:link href="https://examplesite.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Sep 2022 11:30:03 +0000</lastBuildDate><atom:link href="https://467tn.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>デザイン変えました</title>
-      <link>https://examplesite.com/post/content5/</link>
+      <link>https://467tn.com/post/content5/</link>
       <pubDate>Mon, 19 Sep 2022 11:30:03 +0000</pubDate>
       
-      <guid>https://examplesite.com/post/content5/</guid>
+      <guid>https://467tn.com/post/content5/</guid>
       <description>！？</description>
     </item>
     
     <item>
       <title>Airflowのschedule関連について</title>
-      <link>https://examplesite.com/post/content2/</link>
+      <link>https://467tn.com/post/content2/</link>
       <pubDate>Sat, 01 Jan 2022 11:30:03 +0000</pubDate>
       
-      <guid>https://examplesite.com/post/content2/</guid>
+      <guid>https://467tn.com/post/content2/</guid>
       <description>Airflowのschedule関連について</description>
     </item>
     
     <item>
       <title>Flaskを活用して自作exporter作成。Prometheus-&gt;Grafanaで可視化</title>
-      <link>https://examplesite.com/post/content3/</link>
+      <link>https://467tn.com/post/content3/</link>
       <pubDate>Wed, 01 Jan 2020 11:30:03 +0000</pubDate>
       
-      <guid>https://examplesite.com/post/content3/</guid>
+      <guid>https://467tn.com/post/content3/</guid>
       <description>old</description>
     </item>
     
     <item>
       <title>GrafanaでのDashboard作成を自動化する</title>
-      <link>https://examplesite.com/post/content4/</link>
+      <link>https://467tn.com/post/content4/</link>
       <pubDate>Wed, 01 Jan 2020 11:30:03 +0000</pubDate>
       
-      <guid>https://examplesite.com/post/content4/</guid>
+      <guid>https://467tn.com/post/content4/</guid>
       <description>old</description>
     </item>
     

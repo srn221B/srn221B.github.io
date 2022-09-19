@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://examplesite.com/</loc>
+    <loc>https://467tn.com/</loc>
     <lastmod>2022-09-19T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/tags/note/</loc>
+    <loc>https://467tn.com/tags/note/</loc>
     <lastmod>2022-09-19T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/post/</loc>
+    <loc>https://467tn.com/post/</loc>
     <lastmod>2022-09-19T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/tags/</loc>
+    <loc>https://467tn.com/tags/</loc>
     <lastmod>2022-09-19T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/post/content5/</loc>
+    <loc>https://467tn.com/post/content5/</loc>
     <lastmod>2022-09-19T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/tags/airflow/</loc>
+    <loc>https://467tn.com/tags/airflow/</loc>
     <lastmod>2022-01-01T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/post/content2/</loc>
+    <loc>https://467tn.com/post/content2/</loc>
     <lastmod>2022-01-01T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/tags/flask/</loc>
+    <loc>https://467tn.com/tags/flask/</loc>
     <lastmod>2020-01-01T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/post/content3/</loc>
+    <loc>https://467tn.com/post/content3/</loc>
     <lastmod>2020-01-01T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/tags/grafana/</loc>
+    <loc>https://467tn.com/tags/grafana/</loc>
     <lastmod>2020-01-01T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/post/content4/</loc>
+    <loc>https://467tn.com/post/content4/</loc>
     <lastmod>2020-01-01T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/tags/prometheus/</loc>
+    <loc>https://467tn.com/tags/prometheus/</loc>
     <lastmod>2020-01-01T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/categories/</loc>
+    <loc>https://467tn.com/categories/</loc>
   </url>
 </urlset>

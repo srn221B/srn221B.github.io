@@ -1,6 +1,0 @@
-*{
-  text-align: left;
-}
-.content ul li::before{
-  content: "・"
-}
