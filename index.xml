@@ -1,67 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>467 notes </title>
-    <link>https://467tn.com/</link>
-    <description>Recent content on 467 notes </description>
+    <title>467note</title>
+    <link>https://examplesite.com/</link>
+    <description>Recent content on 467note</description>
+    <image>
+      <url>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 08 Aug 2022 00:08:00 +0900</lastBuildDate><atom:link href="https://467tn.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Sep 2022 11:30:03 +0000</lastBuildDate><atom:link href="https://examplesite.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>airflowのschedule関連についての雑メモ</title>
-      <link>https://467tn.com/blog/content7/</link>
-      <pubDate>Mon, 08 Aug 2022 00:08:00 +0900</pubDate>
+      <title>デザイン変えました</title>
+      <link>https://examplesite.com/post/content5/</link>
+      <pubDate>Mon, 19 Sep 2022 11:30:03 +0000</pubDate>
       
-      <guid>https://467tn.com/blog/content7/</guid>
-      <description>概要 Airflowのscheule関連についてしっかりと理解できていなかったので、DataPipelines with ApacheAirflowのCAPTER3「Scheduling in Airflow」を参考にしつつ雑にまとめてみた。
-TL;DR  DAGは「schedule_interval」に設定した間隔で実行される。 「schedule_interval」はcronとtimedeltaインスタンスで書くことができる。 「interval is started」「the end of the interval」 「execution date」は実際の実行時間ではない。 JinjaTemplateを使用して動的に設定することによってデータを段階的に処理できる。 DAGはbackfillを使うと過去分実行ができる。  schedule_intervalについて  DAGの定期的な実行間隔は　airflow.</description>
+      <guid>https://examplesite.com/post/content5/</guid>
+      <description>！？</description>
     </item>
     
     <item>
-      <title>Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法</title>
-      <link>https://467tn.com/blog/content4/</link>
-      <pubDate>Sun, 17 Jan 2021 20:54:56 +0900</pubDate>
+      <title>Airflowのschedule関連について</title>
+      <link>https://examplesite.com/post/content2/</link>
+      <pubDate>Sat, 01 Jan 2022 11:30:03 +0000</pubDate>
       
-      <guid>https://467tn.com/blog/content4/</guid>
-      <description>こんにちは ブログ書くの久々すぎて書き方忘れた。。。うそです。
-去年の卒研終わったあたりから作り始めたこのサイトですが、あまりにも初期状態すぎたので、重い腰をあげて「HugoのthemaをBeautifulHugoからCupperに変更」「repositoryを整理」の２点をしました。一新したのでブログ書くモチベもこれで上がるはず（？）仕事もだいぶ慣れてきたので2022年は些細なことでももう少し書いていきたいな。。。
-タイトル通り 「Dockerを使ったGrafanaのDatasourceとDashboardの起動時追加方法」のメモを簡単に備忘録としてまとめておきます。
-Datasourceの起動時追加 Dashboardの起動時追加を設定する前に、まずはこっちを作っていきます。
-構成 . ├── docker-compose.</description>
+      <guid>https://examplesite.com/post/content2/</guid>
+      <description>Airflowのschedule関連について</description>
     </item>
     
     <item>
-      <title>zeppelinからcassandraとsparkを使う</title>
-      <link>https://467tn.com/blog/content3/</link>
-      <pubDate>Sun, 20 Sep 2020 20:51:54 +0900</pubDate>
+      <title>Flaskを活用して自作exporter作成。Prometheus-&gt;Grafanaで可視化</title>
+      <link>https://examplesite.com/post/content3/</link>
+      <pubDate>Wed, 01 Jan 2020 11:30:03 +0000</pubDate>
       
-      <guid>https://467tn.com/blog/content3/</guid>
-      <description>タイトル通り。zeppelinからcassandraとsparkを使うまで簡単に構築メモ。 kubernetesとhelm 3.3.1を使って構築する。sparkとzeppelinのインストール→Cassandraのインストールの流れで説明。
-sparkとzeppelin  リポジトリはこれ デプロイすると、Podが動く。 Zepplin上のファイルはデフォルトで記憶される。  values.yamlにおいてServicePortの編集  デフォルトのままだとsparkWebUIとzeppelinのServicePortが競合する。なので、どちらかのServicePortを変更する。 ここではsparkWebUIのServicePortを8080から8081に変更する。  $ vim spark/values.</description>
+      <guid>https://examplesite.com/post/content3/</guid>
+      <description>old</description>
     </item>
     
     <item>
-      <title>IntelliJ IDEAでのSparkアプリケーション開発方法（Scala編）</title>
-      <link>https://467tn.com/blog/content2/</link>
-      <pubDate>Sat, 04 Apr 2020 15:40:59 +0900</pubDate>
+      <title>GrafanaでのDashboard作成を自動化する</title>
+      <link>https://examplesite.com/post/content4/</link>
+      <pubDate>Wed, 01 Jan 2020 11:30:03 +0000</pubDate>
       
-      <guid>https://467tn.com/blog/content2/</guid>
-      <description>前回に引き続きSpark環境構築系のおはなし。
-Scala、何で開発してますか
-VScode，AtomなどのエディタやEclipse，NetBeansなどのIDE，開発内容によって様々だと思います。
-自分は簡単なコードだとScala(Metals)とScalaSnippetsの拡張機能を入れてVscodeを利用，Pluginを利用するものだったり複雑なコードだとIntelliJ IDEAを利用しています。
-SparkアプリケーションをIntelliJ IDEAで開発する方法がとても便利だったので記録に残しておきます。
-前提条件  Spark2.4がインストールされていること IntelliJIDEAがインストールされていること IntelliJIDEAでScalaを開発することができること Java8がインストールされていること JDK8を用いて開発できること</description>
-    </item>
-    
-    <item>
-      <title>pysparkをjupyter-notebookから使う</title>
-      <link>https://467tn.com/blog/content1/</link>
-      <pubDate>Sat, 28 Mar 2020 00:08:00 +0900</pubDate>
-      
-      <guid>https://467tn.com/blog/content1/</guid>
-      <description>今までpysparkをいじるときはコンソールでネチネチやっていたのですが、 pythonをjupyter-notebookで開発しているときに便利だなあと思ったので、思い切ってpysparkをいじるときもjupyter-notebookを使うようにしました。その時の備忘録。
-前提条件  Sparkがインストールされていること（この記事がわかりやすかったです。) jupyterがインストールされていること(pipまたはcondaでインストール)  環境  OS：Mac python：Python 3.</description>
+      <guid>https://examplesite.com/post/content4/</guid>
+      <description>old</description>
     </item>
     
   </channel>
