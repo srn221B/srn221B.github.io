@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://467tn.com/</loc>
-    <lastmod>2022-12-11T11:30:03+00:00</lastmod>
+    <lastmod>2023-01-01T11:30:03+00:00</lastmod>
+  </url><url>
+    <loc>https://467tn.com/tags/airflow/</loc>
+    <lastmod>2023-01-01T11:30:03+00:00</lastmod>
+  </url><url>
+    <loc>https://467tn.com/post/content7/</loc>
+    <lastmod>2023-01-01T11:30:03+00:00</lastmod>
+  </url><url>
+    <loc>https://467tn.com/post/</loc>
+    <lastmod>2023-01-01T11:30:03+00:00</lastmod>
+  </url><url>
+    <loc>https://467tn.com/tags/python/</loc>
+    <lastmod>2023-01-01T11:30:03+00:00</lastmod>
+  </url><url>
+    <loc>https://467tn.com/tags/</loc>
+    <lastmod>2023-01-01T11:30:03+00:00</lastmod>
   </url><url>
     <loc>https://467tn.com/post/content6/</loc>
     <lastmod>2022-12-11T11:30:03+00:00</lastmod>
@@ -11,23 +26,11 @@
     <loc>https://467tn.com/tags/gx/</loc>
     <lastmod>2022-12-11T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://467tn.com/post/</loc>
-    <lastmod>2022-12-11T11:30:03+00:00</lastmod>
-  </url><url>
-    <loc>https://467tn.com/tags/python/</loc>
-    <lastmod>2022-12-11T11:30:03+00:00</lastmod>
-  </url><url>
-    <loc>https://467tn.com/tags/</loc>
-    <lastmod>2022-12-11T11:30:03+00:00</lastmod>
-  </url><url>
     <loc>https://467tn.com/tags/note/</loc>
     <lastmod>2022-09-19T11:30:03+00:00</lastmod>
   </url><url>
     <loc>https://467tn.com/post/content5/</loc>
     <lastmod>2022-09-19T11:30:03+00:00</lastmod>
-  </url><url>
-    <loc>https://467tn.com/tags/airflow/</loc>
-    <lastmod>2022-01-01T11:30:03+00:00</lastmod>
   </url><url>
     <loc>https://467tn.com/post/content2/</loc>
     <lastmod>2022-01-01T11:30:03+00:00</lastmod>
