@@ -9,7 +9,16 @@
       <link>https://467tn.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 04 Jan 2023 11:30:03 +0000</lastBuildDate><atom:link href="https://467tn.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Feb 2023 11:30:03 +0000</lastBuildDate><atom:link href="https://467tn.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hadoop周辺の設定メモ</title>
+      <link>https://467tn.com/post/content9/</link>
+      <pubDate>Sat, 11 Feb 2023 11:30:03 +0000</pubDate>
+      
+      <guid>https://467tn.com/post/content9/</guid>
+      <description>自己満(都度更新していく)</description>
+    </item>
+    
     <item>
       <title>AirflowのPluginsについて</title>
       <link>https://467tn.com/post/content8/</link>
