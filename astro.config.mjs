@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     robotsTxt({
-      sitemap: `${SITE_URL}/sitemap.xml`,
+      sitemap: `${SITE_URL}sitemap.xml`,
     }),
   ],
   markdown: {
