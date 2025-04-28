@@ -1,0 +1,120 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets"
+
+import Layout from "@/layouts/Layout.astro";
+import SocialLinks from "@/components/SocialLinks.astro";
+import PostCard from "@/components/PostCard.astro";
+import HobbiesLinks from "@/components/HobbiesLinks.astro";
+import Link from "@/components/shared/Link.astro";
+import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
+
+import presentation from "@/data/presentation";
+import projects from "@/data/hobbies";
+
+const posts = (await getCollection("post"))
+  .filter((post) => 
+    post.data.isPublish && 
+    !post.data.isDraft && 
+    post.data.publishedAt <= new Date()
+  )
+  .sort((first, second) => 
+    second.data.publishedAt.getTime() - first.data.publishedAt.getTime()
+  );
+
+let tagCounts = new Map();
+posts.forEach(post => {
+  (post.data.tags ?? []).forEach(tag => {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  });
+});
+const tagsArray = Array.from(tagCounts.entries());
+---
+
+<Layout>
+  <main class="flex flex-col gap-20">
+    <article
+      class="flex flex-col gap-8 md:flex-row-reverse md:justify-end md:gap-12"
+    >
+      {
+        presentation.profile && (
+          <Image
+            src={presentation.profile}
+            class="w-1/4 self-center rounded-full"
+            alt="Your Profile"
+            width="200"
+            height="200"
+          />
+        )
+      }
+
+      <div class="flex flex-col gap-8 w-full">
+        <h1 class="text-3xl text-neutral-100" set:html="467 shirona"/>
+        <div class="flex flex-wrap flex-col-reverse md:flex-row w-full">
+          <div class="flex-[7]">
+            <h2
+              class="w-auto leading-6"
+              set:html={convertAsteriskToStrongTag(
+                "**I am a Data Engineer** at LYCorp with over three years of experience in the field. Prior to joining LYCorp, I worked as a System Engineer. I am passionate about designing scalable **data pipelines using modern technologies** such as Kubernetes and Airflow, and I have a strong interest in data quality and reliability.I was seccamp2018 as student."
+              )}
+            />
+            <br/>
+            <h2
+              class="w-auto leading-6"
+              set:html={convertAsteriskToStrongTag(
+                "Programming languages: Python, Golang, Java."
+              )}
+            />
+            <h2
+              class="w-auto leading-6"
+              set:html={convertAsteriskToStrongTag(
+                "Qualifications: 高度情報(DB/RISS/NW) / CK{AD|A|S}"
+              )}
+            />
+            <div><SocialLinks /></div>
+          </div>
+          <div class="flex-[1]">
+            <img src="https://user-images.githubusercontent.com/60976262/190943162-bd237020-2d79-4566-a426-bc6d048e1b8e.png" class="self-center" alt="rabibibibibit" width="150" height="150"/>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="flex flex-col gap-8">
+      <header class="flex w-full flex-row justify-between gap-2">
+        <h3 class="text-lg text-neutral-100">Latest posts</h3>
+        <Link href="/post" label="See all posts" isUnderline target="_self" />
+      </header>
+      {posts.length === 0 && <p>Soon, stay connected 👀...</p>}
+
+      <section class="flex flex-col gap-4 md:flex-row md:flex-wrap">
+        {
+          posts.length !== 0 &&
+            posts
+              .slice(0, 2)
+              .map((post) => (
+                <PostCard
+                  publishedAt={post.data.publishedAt}
+                  title={post.data.title}
+                  description={post.data.description}
+                  slug={post.slug}
+                  tags={post.data.tags}
+                />
+              ))
+        }
+      </section>
+      <section class="flex flex-col gap-4 md:flex-row md:flex-wrap">
+        {tagsArray.map(([tag, count]) => (
+          <a href={`/tags/${tag}/`} class="bg-gray-800 text-neutral-100 p-1">{tag} ({count})</a>
+        ))}
+      </section>
+    </article>
+    <article class="flex flex-col gap-8">
+      
+      <h3 class="text-lg text-neutral-100">
+          Hobbies links ({projects.length})
+        </h3>
+        <HobbiesLinks />
+    </article>
+  </main>
+</Layout>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import PostsCard from "@/components/PostsCard.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("post");
+    const tags = new Set(posts.flatMap(post => post.data.tags ?? []));
+    
+    return Array.from(tags).map(tag => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params as { tag: string };
+const posts = await getCollection("post");
+
+const filteredPosts = posts
+    .filter(post => 
+        post.data.isPublish &&
+        !post.data.isDraft &&
+        post.data.publishedAt <= new Date() &&
+        (post.data.tags ?? []).includes(tag)
+    )
+    .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+---
+
+<Layout title={`Posts tagged with "${tag}"`}>
+    <main class="flex flex-col gap-20">
+        <h1 class="text-2xl text-neutral-100">{`Posts tagged with "${tag}"`}</h1>
+        <article class="flex flex-col gap-4">
+            {filteredPosts.length > 0 ? (
+                filteredPosts.map(post => (
+                    <PostsCard
+                        publishedAt={post.data.publishedAt}
+                        title={post.data.title}
+                        description={post.data.description}
+                        slug={post.slug}
+                        tags={post.data.tags}
+                    />
+                ))
+            ) : (
+                <p>No posts found for this tag.</p>
+            )}
+        </article>
+    </main>
+</Layout>

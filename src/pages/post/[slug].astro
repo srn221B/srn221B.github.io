@@ -1,0 +1,64 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import formatDate from "@/utils/formatDate";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("post");
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<"post">;
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <main class="post mx-auto flex w-full flex-col gap-4">
+    <header role="presentation">
+      <h1 class="text-md text-neutral-200 font-bold">
+        {post.data.title} - {formatDate(post.data.publishedAt)}
+      </h1>
+      <p>{post.data.description}</p>
+      <p class="text-sm text-pink-400">{post.data.tags?.join(" / ")}</p>
+    </header>
+    <hr/>
+    <Content />
+    <hr/>
+    <section class="flex flex-col gap-4 md:flex-row md:flex-wrap">
+      <a
+        href={`https://x.com/intent/tweet?text=${encodeURIComponent(post.data.title + " @srn467o")}&url=${encodeURIComponent(Astro.url.href)}`}
+        target="_blank"
+      >
+        share on twitter
+      </a>
+      <a
+        href={`https://github.com/srn221B/blog/blob/master/content/post/${post.slug}.md`}
+        target="_blank"
+      >
+        suggests change
+      </a>
+    </section>
+  </main>
+  <script src="https://giscus.app/client.js"
+    data-repo="srn221B/blog"
+    data-repo-id="R_kgDOIBf-Xg"
+    data-category="Comments"
+    data-category-id="DIC_kwDOIBf-Xs4CTe7o"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="dark"
+    crossorigin="anonymous"
+    async>
+  </script>
+</Layout>
