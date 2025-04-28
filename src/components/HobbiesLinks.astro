@@ -1,0 +1,16 @@
+---
+import Link from "./shared/Link.astro";
+import hobbies from "@/data/hobbies";
+---
+
+<ul role="list" class="gap-2">
+  {
+    hobbies.map((hobby, index) => (
+      <>
+        <li>
+          ・<Link href={hobby.link} label={`${hobby.title} (${hobby.description})`} />
+        </li>
+      </>
+    ))
+  }
+</ul>

@@ -1,0 +1,79 @@
+.post p {
+  @apply leading-7;
+}
+
+.post h2 {
+  @apply mt-6 text-3xl text-neutral-100;
+}
+
+.post h3 {
+  @apply mt-4 text-xl text-neutral-100;
+}
+
+.post h4 {
+  @apply mt-2 text-lg text-neutral-100;
+}
+
+.post code {
+  @apply rounded-sm bg-neutral-800 py-[1px] text-neutral-100 text-sm;
+}
+
+.post a {
+  @apply text-neutral-100 text-sky-400 underline;
+}
+
+.post ul {
+  @apply list-disc gap-2;
+  margin-left:20px;
+}
+
+.post ul ul {
+  @apply list-disc gap-2;
+  margin-left:20px;
+}
+
+
+.post blockquote {
+  @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[2px] before:bg-pink-400 before:content-[''];
+}
+
+.post pre {
+  @apply p-5;
+}
+
+.post pre > code {
+  @apply bg-transparent;
+}
+
+.toc {
+  @apply border border-neutral-700;
+  padding: 10px;
+}
+
+.toc ol {
+  list-style: none;
+  counter-reset: toc;
+  padding-left: 22px;
+}
+
+.toc ol li {
+  counter-increment: toc;
+}
+
+.toc ol li a{
+  @apply no-underline text-neutral-400;
+}
+
+.toc ol li a:hover{
+  @apply no-underline text-neutral-200;
+}
+
+.toc ol li:before {
+  @apply text-neutral-400;
+  content: counters(toc, ".") " ";
+}
+
+
+.post th, td {
+  @apply bg-gray-800 p-2 border border-slate-950;
+}
