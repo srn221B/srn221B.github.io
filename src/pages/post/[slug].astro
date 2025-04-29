@@ -23,9 +23,9 @@ const { Content } = await post.render();
 <Layout title={post.data.title} description={post.data.description}>
   <main class="post mx-auto flex w-full flex-col gap-4">
     <header role="presentation">
-      <h1 class="text-md text-neutral-200 font-bold">
+      <p class="text-md text-neutral-200 font-bold">
         {post.data.title} - {formatDate(post.data.publishedAt)}
-      </h1>
+      </p>
       <p>{post.data.description}</p>
       <p class="text-sm text-pink-400">{post.data.tags?.join(" / ")}</p>
     </header>

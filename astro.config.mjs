@@ -14,7 +14,7 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [
       "rehype-slug",
-      ["rehype-toc", { headings: ["h2", "h3"] }],
+      ["rehype-toc", { headings: ["h1", "h2", "h3", "h4", "h5"] }],
     ],
   },
   site: SITE_URL,
