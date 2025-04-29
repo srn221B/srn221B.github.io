@@ -24,12 +24,12 @@
 
 .post ul {
   @apply list-disc gap-2;
-  margin-left:20px;
+  margin-left: 20px;
 }
 
 .post ul ul {
   @apply list-disc gap-2;
-  margin-left:20px;
+  margin-left: 20px;
 }
 
 
@@ -41,7 +41,7 @@
   @apply p-5;
 }
 
-.post pre > code {
+.post pre>code {
   @apply bg-transparent;
 }
 
@@ -60,11 +60,11 @@
   counter-increment: toc;
 }
 
-.toc ol li a{
+.toc ol li a {
   @apply no-underline text-neutral-400;
 }
 
-.toc ol li a:hover{
+.toc ol li a:hover {
   @apply no-underline text-neutral-200;
 }
 
@@ -73,7 +73,7 @@
   content: counters(toc, ".") " ";
 }
 
-
-.post th, td {
+.post th,
+td {
   @apply bg-gray-800 p-2 border border-slate-950;
 }

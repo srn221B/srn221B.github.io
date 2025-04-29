@@ -5,41 +5,72 @@ import PostsCard from "@/components/PostsCard.astro";
 
 export async function getStaticPaths() {
     const posts = await getCollection("post");
-    const tags = new Set(posts.flatMap(post => post.data.tags ?? []));
-    
-    return Array.from(tags).map(tag => ({ params: { tag } }));
+    const tags = new Set(posts.flatMap((post) => post.data.tags ?? []));
+
+    return Array.from(tags).map((tag) => ({ params: { tag } }));
 }
 
 const { tag } = Astro.params as { tag: string };
-const posts = await getCollection("post");
 
-const filteredPosts = posts
-    .filter(post => 
-        post.data.isPublish &&
-        !post.data.isDraft &&
-        post.data.publishedAt <= new Date() &&
-        (post.data.tags ?? []).includes(tag)
+const filteredPosts = (await getCollection("post"))
+    .filter(
+        (post) =>
+            post.data.isPublish &&
+            !post.data.isDraft &&
+            post.data.publishedAt <= new Date() &&
+            (post.data.tags ?? []).includes(tag),
     )
-    .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+    .sort(
+        (first, second) =>
+            second.data.publishedAt.getTime() -
+            first.data.publishedAt.getTime(),
+    );
+
+const postsByYear = filteredPosts.reduce<Record<number, typeof filteredPosts>>(
+    (acc, post) => {
+        const year = post.data.publishedAt.getFullYear();
+        if (!acc[year]) {
+            acc[year] = [];
+        }
+        acc[year].push(post);
+        return acc;
+    },
+    {},
+);
+
+const sortedYears = Object.keys(postsByYear)
+    .map(Number)
+    .sort((a, b) => b - a);
 ---
 
 <Layout title={`Posts tagged with "${tag}"`}>
     <main class="flex flex-col gap-20">
-        <h1 class="text-2xl text-neutral-100">{`Posts tagged with "${tag}"`}</h1>
+        <h1 class="text-2xl text-neutral-100">
+            {`Posts tagged with "${tag}"`}
+        </h1>
         <article class="flex flex-col gap-4">
-            {filteredPosts.length > 0 ? (
-                filteredPosts.map(post => (
-                    <PostsCard
-                        publishedAt={post.data.publishedAt}
-                        title={post.data.title}
-                        description={post.data.description}
-                        slug={post.slug}
-                        tags={post.data.tags}
-                    />
-                ))
-            ) : (
-                <p>No posts found for this tag.</p>
-            )}
+            {
+                sortedYears.length > 0 ? (
+                    sortedYears.map((year) => (
+                        <section class="flex flex-col gap-4">
+                            <h2 class="text-xl text-neutral-300">{year}</h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {postsByYear[year].map((post) => (
+                                    <PostsCard
+                                        publishedAt={post.data.publishedAt}
+                                        title={post.data.title}
+                                        description={post.data.description}
+                                        slug={post.slug}
+                                        tags={post.data.tags}
+                                    />
+                                ))}
+                            </div>
+                        </section>
+                    ))
+                ) : (
+                    <p>No posts found for this tag.</p>
+                )
+            }
         </article>
     </main>
 </Layout>

@@ -5,10 +5,14 @@ import hobbies from "@/data/hobbies";
 
 <ul role="list" class="gap-2">
   {
-    hobbies.map((hobby, index) => (
+    hobbies.map((hobby) => (
       <>
         <li>
-          ・<Link href={hobby.link} label={`${hobby.title} (${hobby.description})`} />
+          ・
+          <Link
+            href={hobby.link}
+            label={`${hobby.title} (${hobby.description})`}
+          />
         </li>
       </>
     ))
