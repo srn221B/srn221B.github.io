@@ -4,21 +4,21 @@ import { AstroFont } from "astro-font";
 import { SEO } from "astro-seo";
 import { SITE_URL } from "@/data/config";
 
-
 type Props = HeadTags;
- 
+
 const { title, description, noindex, og } = Astro.props;
 
 const DEFAULT_TITLE_PAGE = "🦄。+";
-const DEFAULT_DESCRIPTION_PAGE =
-  "A minimal portfolio template built with Astro and Tailwindcss.";
+const DEFAULT_DESCRIPTION_PAGE = "";
 const DEFAULT_URL_SITE = SITE_URL;
 
 const openGraph = {
   title: title || og?.title || DEFAULT_TITLE_PAGE,
   type: og?.type || "website",
-  image: og?.image || "/avator.png",
-  alt: og?.alt || "astro portfolio template image",
+  image:
+    og?.image ||
+    "https://user-images.githubusercontent.com/60976262/190943162-bd237020-2d79-4566-a426-bc6d048e1b8e.png",
+  alt: og?.alt || "rabibibibibibit",
   url: DEFAULT_URL_SITE,
   description: og?.description || DEFAULT_DESCRIPTION_PAGE,
 };
