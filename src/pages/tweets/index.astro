@@ -1,0 +1,11 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import DuckDBComponent from '@/data/DuckDBComponent';
+
+---
+
+<Layout title="Tweets with SQL">
+    <main class="post mx-auto flex w-full flex-col gap-4">
+        <DuckDBComponent client:load />
+    </main>
+</Layout>
