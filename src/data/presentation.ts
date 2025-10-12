@@ -1,5 +1,5 @@
 type Social = {
-  label: string;
+  iconName: string;
   link: string;
 };
 
@@ -11,15 +11,15 @@ type Presentation = {
 const presentation: Presentation = {
   socials: [
     {
-      label: "X",
+      iconName: "entypo-social:twitter",
       link: "https://x.com/srn467o",
     },
     {
-      label: "LinkedIn",
+      iconName: "entypo-social:linkedin",
       link: "https://www.linkedin.com/in/srn221b/",
     },
     {
-      label: "Github",
+      iconName: "entypo-social:github",
       link: "https://github.com/srn221B",
     },
   ],

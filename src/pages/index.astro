@@ -71,7 +71,6 @@ const tagsArray = Array.from(tagCounts.entries());
                 "Qualifications: 高度情報(DB/RISS/NW) / CK{AD|A|S}"
               )}
             />
-            <div><SocialLinks /></div>
           </div>
           <div class="flex-[1]">
             <img src="https://user-images.githubusercontent.com/60976262/190943162-bd237020-2d79-4566-a426-bc6d048e1b8e.png" class="self-center" alt="rabibibibibit" width="150" height="150"/>
@@ -79,6 +78,13 @@ const tagsArray = Array.from(tagCounts.entries());
         </div>
       </div>
     </article>
+
+    <article class="flex flex-col gap-8">
+      <header class="flex w-full flex-row justify-between gap-2">
+        <h3 class="text-lg text-neutral-100">Social Links</h3>
+      </header>
+      <SocialLinks />
+    </article> 
 
     <article class="flex flex-col gap-8">
       <header class="flex w-full flex-row justify-between gap-2">
@@ -110,11 +116,10 @@ const tagsArray = Array.from(tagCounts.entries());
       </section>
     </article>
     <article class="flex flex-col gap-8">
-      
       <h3 class="text-lg text-neutral-100">
-          Hobbies links ({projects.length})
-        </h3>
-        <HobbiesLinks />
+        Hobbies links
+      </h3>
+      <HobbiesLinks />
     </article>
   </main>
 </Layout>

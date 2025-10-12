@@ -4,14 +4,12 @@ import { defineConfig } from "astro/config";
 import { SITE_URL } from "./src/data/config";
 import react from '@astrojs/react';
 
+import icon from "astro-icon";
+
 export default defineConfig({
-  integrations: [
-    react(),
-    tailwind(),
-    robotsTxt({
-      sitemap: `${SITE_URL}/sitemap.xml`,
-    }),
-  ],
+  integrations: [react(), tailwind(), robotsTxt({
+    sitemap: `${SITE_URL}/sitemap.xml`,
+  }), icon()],
   markdown: {
     rehypePlugins: [
       "rehype-slug",
