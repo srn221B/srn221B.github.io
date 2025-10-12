@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import formatDate from "@/utils/formatDate";
+import { Icon } from 'astro-icon/components';
 
 export async function getStaticPaths() {
   const posts = await getCollection("post");
@@ -32,13 +33,32 @@ const { Content } = await post.render();
     <hr/>
     <Content />
     <hr/>
-    <section class="flex flex-col gap-4 md:flex-row md:flex-wrap">
+    <section class="text-center flex flex-col gap-2 my-1">
+      <p class="text-white">shared</p>
       <a
         href={`https://x.com/intent/tweet?text=${encodeURIComponent(post.data.title + " @srn467o")}&url=${encodeURIComponent(Astro.url.href)}`}
         target="_blank"
+        class="flex justify-center"
       >
-        share on twitter
+        <Icon name="entypo-social:twitter" class="text-lg text-gray-400"/>
       </a>
+    </section>
+    <script src="https://giscus.app/client.js"
+      data-repo="srn221B/blog"
+      data-repo-id="R_kgDOIBf-Xg"
+      data-category="Comments"
+      data-category-id="DIC_kwDOIBf-Xs4CTe7o"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="dark"
+      crossorigin="anonymous"
+      async>
+    </script>
+    <section class="text-center my-3">
+      <p class="text-sm text-gray-400">Found a typo or something wrong? Please
       <a
         href={`https://github.com/srn221B/blog/blob/master/post/${post.slug}.md`}
         target="_blank"
@@ -47,18 +67,4 @@ const { Content } = await post.render();
       </a>
     </section>
   </main>
-  <script src="https://giscus.app/client.js"
-    data-repo="srn221B/blog"
-    data-repo-id="R_kgDOIBf-Xg"
-    data-category="Comments"
-    data-category-id="DIC_kwDOIBf-Xs4CTe7o"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="dark"
-    crossorigin="anonymous"
-    async>
-  </script>
 </Layout>
