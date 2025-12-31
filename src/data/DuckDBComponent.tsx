@@ -85,25 +85,31 @@ type TableProps = {
   className?: string;
 };
 
-const TableCard: React.FC<TableProps> = ({ data, className = '' }) => (
-  <table className={`border-collapse border text-sm ${className}`}>
-    <thead>
-      <tr>
-        {Object.keys(data[0]).map(key => (
-          <th key={key} className="border px-1 py-1">{key}</th>
-        ))}
-      </tr>
-    </thead>
-    <tbody>
-      {data.map((row, i) => (
-        <tr key={i}>
-          {Object.values(row).map((val, j) => (
-            <td key={j} className="border px-1 py-1">{String(val)}</td>
+const TableCard: React.FC<TableProps> = ({ data, className = '' }) => {
+  if (data.length === 0) {
+    return null;
+  }
+
+  return (
+    <table className={`border-collapse border text-sm ${className}`}>
+      <thead>
+        <tr>
+          {Object.keys(data[0]).map(key => (
+            <th key={key} className="border px-1 py-1">{key}</th>
           ))}
         </tr>
-      ))}
-    </tbody>
-  </table>
-);
+      </thead>
+      <tbody>
+        {data.map((row, i) => (
+          <tr key={i}>
+            {Object.values(row).map((val, j) => (
+              <td key={j} className="border px-1 py-1">{String(val)}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
 
 export default DuckDBComponent;
