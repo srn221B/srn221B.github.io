@@ -20,7 +20,6 @@ posts.forEach((post) => {
     tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
   });
 });
-const tagsArray = Array.from(tagCounts.entries());
 ---
 
 <Layout>
