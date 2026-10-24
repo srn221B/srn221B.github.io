@@ -1,4 +1,4 @@
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import { SITE_URL } from "./src/data/config";
@@ -7,7 +7,7 @@ import react from '@astrojs/react';
 import icon from "astro-icon";
 
 export default defineConfig({
-  integrations: [react(), tailwind(), robotsTxt({
+  integrations: [react(), robotsTxt({
     sitemap: `${SITE_URL}/sitemap.xml`,
   }), icon()],
   markdown: {
@@ -17,4 +17,7 @@ export default defineConfig({
     ],
   },
   site: SITE_URL,
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

@@ -65,9 +65,9 @@ const DuckDBComponent: React.FC = () => {
       <textarea
         value={sql}
         onChange={e => setSql(e.target.value)}
-        className="w-full h-32 mt-2 border border-neutral-700 hover:border-neutral-700 focus:border-neutral-700 focus:outline-none focus:ring-0 p-3 bg-gray-900 text-white font-mono"
+        className="w-full h-32 mt-2 border border-neutral-700 hover:border-neutral-700 focus:border-neutral-700 focus:outline-hidden focus:ring-0 p-3 bg-gray-900 text-white font-mono"
       />
-      <button onClick={runQuery} className="mt-2 p-2 text-pink-400 rounded">
+      <button onClick={runQuery} className="mt-2 p-2 text-pink-400 rounded-sm">
         SUBMIT
       </button>
 

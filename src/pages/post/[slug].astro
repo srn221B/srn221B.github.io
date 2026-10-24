@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import formatDate from "@/utils/formatDate";
 import { Icon } from 'astro-icon/components';
@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const posts = await getCollection("post");
 
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
@@ -18,7 +18,7 @@ type Props = {
 };
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
@@ -60,11 +60,12 @@ const { Content } = await post.render();
     <section class="text-center my-3">
       <p class="text-sm text-gray-400">Found a typo or something wrong? Please
       <a
-        href={`https://github.com/srn221B/blog/blob/master/post/${post.slug}.md`}
+        href={`https://github.com/srn221B/blog/blob/master/post/${post.id}.md`}
         target="_blank"
       >
         suggests change
       </a>
+      </p>
     </section>
   </main>
 </Layout>
