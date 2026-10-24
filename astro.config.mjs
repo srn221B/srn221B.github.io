@@ -1,5 +1,4 @@
 import tailwindcss from "@tailwindcss/vite";
-import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import { SITE_URL } from "./src/data/config";
 import react from '@astrojs/react';
@@ -7,9 +6,7 @@ import react from '@astrojs/react';
 import icon from "astro-icon";
 
 export default defineConfig({
-  integrations: [react(), robotsTxt({
-    sitemap: `${SITE_URL}/sitemap.xml`,
-  }), icon()],
+  integrations: [react(), icon()],
   markdown: {
     rehypePlugins: [
       "rehype-slug",
