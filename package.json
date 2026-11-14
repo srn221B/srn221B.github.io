@@ -17,7 +17,7 @@
     "@duckdb/duckdb-wasm": "^1.30.0",
     "@iconify-json/entypo-social": "^1.2.3",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.2.8",
+    "astro": "^7.4.7",
     "astro-font": "^0.0.77",
     "astro-icon": "^1.1.5",
     "astro-seo": "0.8.0",
