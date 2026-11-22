@@ -27,6 +27,7 @@ fn post(slug: &str, date: &str, is_publish: bool, is_draft: bool, tags: &[&str])
     Post {
         slug: slug.into(),
         body_html: String::new(),
+        toc: Vec::new(),
         meta: FrontMatter {
             title: slug.into(),
             published_at: date.into(),

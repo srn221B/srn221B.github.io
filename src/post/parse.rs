@@ -3,7 +3,10 @@ use std::{fs, path::Path};
 use anyhow::{Context, Result, bail};
 
 use super::{FrontMatter, Post};
-use crate::{markdown::render_markdown, util::is_iso_date};
+use crate::{
+    markdown::{Rendered, render_markdown},
+    util::is_iso_date,
+};
 
 impl Post {
     pub fn load(dir: &Path, slug: &str) -> Result<Self> {
@@ -25,10 +28,12 @@ impl Post {
         let meta: FrontMatter = serde_yaml_ng::from_str(yaml).context("frontmatter が不正です")?;
         validate(slug, &meta)?;
 
+        let Rendered { html, toc } = render_markdown(body);
         Ok(Self {
             slug: slug.to_string(),
             meta,
-            body_html: render_markdown(body),
+            body_html: html,
+            toc,
         })
     }
 

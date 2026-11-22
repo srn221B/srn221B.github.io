@@ -1,7 +1,7 @@
 use leptos::prelude::*;
 
 use crate::{
-    components::{layout::Layout, post_card::TagList},
+    components::{giscus::Giscus, layout::Layout, post_card::TagList, toc::Toc},
     post::Post,
     site::{absolute_url, index_href, post_href},
     util::urlencode,
@@ -13,6 +13,7 @@ pub fn PostPage(post: Post) -> impl IntoView {
         slug,
         meta,
         body_html,
+        toc,
     } = post;
     let path = post_href(&slug);
     let url = absolute_url(&path);
@@ -30,7 +31,7 @@ pub fn PostPage(post: Post) -> impl IntoView {
             path=path
             og_type="article"
         >
-            <main class="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6">
+            <main class="relative mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6">
                 <div class="breadcrumbs text-sm">
                     <ul>
                         <li><a href="/">"Home"</a></li>
@@ -49,9 +50,29 @@ pub fn PostPage(post: Post) -> impl IntoView {
                     </div>
                 </header>
 
+                {(!toc.is_empty())
+                    .then(|| {
+                        view! {
+                            <details class="rounded-box bg-base-200 p-4 xl:hidden">
+                                <summary class="cursor-pointer text-sm font-bold">"目次"</summary>
+                                <div class="mt-3">
+                                    <Toc entries=toc.clone() />
+                                </div>
+                            </details>
+                            <aside class="absolute left-full top-6 bottom-6 ml-8 hidden w-56 xl:block">
+                                <div class="sticky top-6 max-h-[calc(100vh-3rem)] overflow-y-auto">
+                                    <p class="mb-3 text-sm font-bold">"目次"</p>
+                                    <Toc entries=toc />
+                                </div>
+                            </aside>
+                        }
+                    })}
+
                 <article class="prose prose-invert max-w-none" inner_html=body_html></article>
 
                 <div class="divider"></div>
+
+                <Giscus />
 
                 <footer class="flex flex-col items-center gap-3 text-sm">
                     <a
