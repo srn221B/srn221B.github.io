@@ -18,7 +18,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Build site
-        run: ./build.sh
+        run: ./scripts/build.sh
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

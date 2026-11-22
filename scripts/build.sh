@@ -2,10 +2,10 @@
 # ホーム・全記事・一覧・タグページを Leptos で静的 HTML にし、Tailwind(standalone) + daisyUI で CSS を作る。
 # Node は使わない。
 #
-#   ./build.sh                # dist に出力（ホームは dist/index.html、記事は dist/post/）
-#   OUT=/tmp/out ./build.sh   # 出力先を変更
+#   ./scripts/build.sh                # dist に出力（ホームは dist/index.html、記事は dist/post/）
+#   OUT=/tmp/out ./scripts/build.sh   # 出力先を変更
 set -euo pipefail
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 
 OUT="${OUT:-dist}"
 TOOLS=.tools

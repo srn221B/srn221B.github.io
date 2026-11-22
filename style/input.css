@@ -7,7 +7,7 @@
 /* 記事本文 (Markdown 由来の HTML) の装飾 */
 @plugin "@tailwindcss/typography";
 
-/* daisyUI (build.sh が style/ に daisyui.mjs をダウンロードする) */
+/* daisyUI (scripts/build.sh が style/ に daisyui.mjs をダウンロードする) */
 @plugin "./daisyui.mjs" {
   themes: dark --default;
 }
