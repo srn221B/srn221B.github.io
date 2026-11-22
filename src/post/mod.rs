@@ -3,6 +3,8 @@ mod query;
 
 use serde::Deserialize;
 
+use crate::markdown::TocEntry;
+
 pub use query::{group_by_year, posts_by_tag, published};
 
 #[derive(Debug, Clone, Deserialize)]
@@ -37,6 +39,7 @@ pub struct Post {
     pub slug: String,
     pub meta: FrontMatter,
     pub body_html: String,
+    pub toc: Vec<TocEntry>,
 }
 
 #[derive(Debug, Clone)]
