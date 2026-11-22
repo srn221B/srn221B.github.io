@@ -1,18 +1,15 @@
-name: CI
+name: 🍭 CI
 
 on: [push, pull_request]
 
 jobs:
-  check-astro:
+  check:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: checks
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
         with:
-          node-version: 22
-          cache: "npm"
-      - run: npm install
-      - run: npm run check
-
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - run: make ci
