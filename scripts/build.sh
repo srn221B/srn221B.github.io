@@ -3,7 +3,11 @@
 # Node は使わない。
 #
 #   ./scripts/build.sh                # dist に出力（ホームは dist/index.html、記事は dist/post/）
-#   OUT="${OUT:-dist}"
+#   OUT=/tmp/out ./scripts/build.sh   # 出力先を変更
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+OUT="${OUT:-dist}"
 TOOLS=.tools
 
 # 取得する外部ファイルはバージョンと SHA256 を固定する。更新するときは両方を書き換える
