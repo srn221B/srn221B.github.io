@@ -2,7 +2,7 @@ use leptos::prelude::*;
 
 use crate::{
     components::{blur_circle::BlurCircles, head::og},
-    site::{STYLE_HREF, absolute_url, index_href},
+    site::{OG_IMAGE, OG_IMAGE_ALT, STYLE_HREF, TWITTER_CREATOR, absolute_url, index_href},
 };
 
 #[component]
@@ -19,6 +19,7 @@ pub fn Layout(
     let page_title = format!("{title} | srn221b");
     let meta_description = (!description.is_empty())
         .then(|| view! { <meta name="description" content=description.clone() /> });
+    let og_description = (!description.is_empty()).then(|| og("og:description", description));
 
     view! {
         <html lang="ja" data-theme="dark">
@@ -29,9 +30,12 @@ pub fn Layout(
                 {meta_description}
                 {og("og:type", og_type.to_string())}
                 {og("og:title", title)}
-                {og("og:description", description)}
+                {og_description}
                 {og("og:url", url.clone())}
+                {og("og:image", OG_IMAGE.to_string())}
+                {og("og:image:alt", OG_IMAGE_ALT.to_string())}
                 <meta name="twitter:card" content="summary" />
+                <meta name="twitter:creator" content=TWITTER_CREATOR />
                 <link rel="canonical" href=url />
                 <link rel="icon" href="/favicon.svg" />
                 <link rel="stylesheet" href=STYLE_HREF />
