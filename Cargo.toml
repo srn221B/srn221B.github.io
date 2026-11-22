@@ -1,0 +1,14 @@
+[package]
+name = "leptos-post"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+# Leptos を SSR モードで使い、view! をビルド時に HTML 文字列へ変換する
+leptos = { version = "0.8", features = ["ssr"] }
+# Markdown -> HTML（GFM 対応 + syntect によるコードハイライト）
+comrak = { version = "1", default-features = false, features = ["syntect-fancy"] }
+serde = { version = "1", features = ["derive"] }
+serde_yaml_ng = "0.10"
+anyhow = "1"

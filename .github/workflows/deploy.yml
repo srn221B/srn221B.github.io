@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: 🍯 Deploy to GitHub Pages
 
 on:
   push:
@@ -14,14 +14,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Build site
+        run: ./build.sh
+      - uses: actions/upload-pages-artifact@v3
         with:
-          # path: . # リポジトリ内のAstroプロジェクトのルートロケーション。（オプション）
-          node-version: 22 # サイト構築に使用するNodeのバージョン。デフォルトは20です。（オプション）
-          # package-manager: pnpm@latest # 依存関係のインストールとサイトのビルドに使用するNodeパッケージマネージャ。ロックファイルに基づいて自動的に検出されます。（オプション）
+          path: dist
 
   deploy:
     needs: build

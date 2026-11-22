@@ -1,0 +1,13 @@
+/* 自動検出は使わず、下の @source だけを走査する（target/ などを拾わないため） */
+@import "tailwindcss" source(none);
+
+/* Rust のコンポーネントに書いたクラス名を拾う */
+@source "../src";
+
+/* 記事本文 (Markdown 由来の HTML) の装飾 */
+@plugin "@tailwindcss/typography";
+
+/* daisyUI (build.sh が style/ に daisyui.mjs をダウンロードする) */
+@plugin "./daisyui.mjs" {
+  themes: dark --default;
+}
